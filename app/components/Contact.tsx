@@ -1,15 +1,15 @@
 "use client";
 
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 import ContactForm from "./ContactForm";
 import * as yup from "yup";
 import { useEffect, useRef } from "react";
 
 export default function Contact({ data }: any) {
-  const headerRef = useRef(null);
-  const infoCardsRef = useRef([]);
-  const socialsRef = useRef(null);
-  const formRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const infoCardsRef = useRef<Array<HTMLAnchorElement | null>>([]);
+  const socialsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const contactInfo = [
     {
@@ -50,20 +50,17 @@ export default function Contact({ data }: any) {
   useEffect(() => {
     // Load GSAP scripts
     const loadGSAP = () => {
-      // Check if GSAP is already loaded
       if (typeof window !== "undefined" && (window as any).gsap) {
         initAnimations();
         return;
       }
 
-      // Load GSAP core
       const gsapScript = document.createElement("script");
       gsapScript.src =
         "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
       gsapScript.async = true;
 
       gsapScript.onload = () => {
-        // Load ScrollTrigger plugin
         const scrollTriggerScript = document.createElement("script");
         scrollTriggerScript.src =
           "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
@@ -84,17 +81,12 @@ export default function Contact({ data }: any) {
       const ScrollTrigger = (window as any).ScrollTrigger;
 
       if (!gsap || !ScrollTrigger) return;
-
       gsap.registerPlugin(ScrollTrigger);
 
-      // Animate header
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          {
-            opacity: 0,
-            y: 50,
-          },
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
@@ -110,16 +102,11 @@ export default function Contact({ data }: any) {
         );
       }
 
-      // Animate contact info cards
       infoCardsRef.current.forEach((card, index) => {
         if (card) {
           gsap.fromTo(
             card,
-            {
-              opacity: 0,
-              x: -60,
-              scale: 0.9,
-            },
+            { opacity: 0, x: -60, scale: 0.9 },
             {
               opacity: 1,
               x: 0,
@@ -138,15 +125,10 @@ export default function Contact({ data }: any) {
         }
       });
 
-      // Animate socials card
       if (socialsRef.current) {
         gsap.fromTo(
           socialsRef.current,
-          {
-            opacity: 0,
-            x: -60,
-            scale: 0.9,
-          },
+          { opacity: 0, x: -60, scale: 0.9 },
           {
             opacity: 1,
             x: 0,
@@ -164,15 +146,10 @@ export default function Contact({ data }: any) {
         );
       }
 
-      // Animate form
       if (formRef.current) {
         gsap.fromTo(
           formRef.current,
-          {
-            opacity: 0,
-            x: 60,
-            scale: 0.95,
-          },
+          { opacity: 0, x: 60, scale: 0.95 },
           {
             opacity: 1,
             x: 0,
@@ -192,7 +169,6 @@ export default function Contact({ data }: any) {
 
     loadGSAP();
 
-    // Cleanup
     return () => {
       if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
         (window as any).ScrollTrigger.getAll().forEach((trigger: any) =>
@@ -230,7 +206,9 @@ export default function Contact({ data }: any) {
               <a
                 key={i}
                 href={link}
-                ref={(el) => (infoCardsRef.current[i] = el)}
+                ref={(el) => {
+                  infoCardsRef.current[i] = el ?? null; // ✅ return void
+                }}
                 className="block p-6 rounded-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-cyan-400/20 hover:border-cyan-400/40 transition-all"
               >
                 <div className="flex items-start gap-4">
