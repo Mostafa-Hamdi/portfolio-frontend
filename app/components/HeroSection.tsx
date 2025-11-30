@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-
+import personalImage from "@/public/aa.png";
 interface StackItem {
   heading: string;
   skills: string[];
@@ -225,8 +225,8 @@ const HeroSection = ({ data }: HeroSectionProps) => {
                 </div>
               </div>
               <div className="text-gray-200 font-medium text-sm">
-                {data.stackOne.skills.map((skill, index) =>
-                  data.stackOne.skills.length === index + 1
+                {data?.stackOne?.skills.map((skill: any, index: any) =>
+                  data?.stackOne?.skills.length === index + 1
                     ? `${skill}`
                     : `${skill} • `,
                 )}
@@ -241,8 +241,8 @@ const HeroSection = ({ data }: HeroSectionProps) => {
                 </div>
               </div>
               <div className="text-gray-200 font-medium text-sm">
-                {data.stackTwo.skills.map((skill, index) =>
-                  data.stackTwo.skills.length === index + 1
+                {data?.stackTwo?.skills.map((skill, index) =>
+                  data?.stackTwo?.skills.length === index + 1
                     ? `${skill}`
                     : `${skill} • `,
                 )}
@@ -310,11 +310,12 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           className="flex items-center justify-center lg:justify-end"
         >
           <Image
-            src={`${data?.image}`}
+            // src={`${data?.image}`}
+            src={personalImage}
             alt="Mostafa Hamdi - Full Stack Developer"
             width={450}
             height={700}
-            className="w-full max-w-[400px] lg:max-w-[450px] rounded-3xl"
+            className="w-full max-w-[400px] mx-auto lg:max-w-[450px] rounded-3xl"
             priority
           />
         </div>

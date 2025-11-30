@@ -6,30 +6,44 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import staticData from "@/app/staticData";
+
 const getData = async () => {
   try {
     const response = await fetch(
       "https://portfolio-backend-ftux.onrender.com/landing",
+      { cache: "no-store" },
     );
+
+    if (!response.ok) {
+      return { data: staticData.data };
+    }
+
     const data = await response.json();
-    return data?.data ? data : { data: staticData.data };
-  } catch (Err) {
-    console.log(Err);
+
+    if (!data?.data) {
+      return { data: staticData.data };
+    }
+
+    return data;
+  } catch (err) {
+    return { data: staticData.data };
   }
 };
+
 export default async function Home() {
-  const data = await getData();
-  console.log(data);
+  const data = await getData(); // Always safe now
+
   return (
     <>
       <Header />
-      <HeroSection data={data?.data?.hero} />
+      <HeroSection data={data.data.hero} />
       <Parteners />
-      <About data={data?.data?.about} />
+      <About data={data.data.about} />
       <Services />
-      <Projects data={data?.data?.projects} />
-      <Contact data={data?.data?.contact} />
+      <Projects data={data.data.projects} />
+      <Contact data={data.data.contact} />
       <Footer />
     </>
   );

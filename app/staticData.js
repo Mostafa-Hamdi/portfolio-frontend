@@ -87,7 +87,129 @@ const staticData = {
     },
     projects: {
       heading: { solid: "Featured ", colored: "Projects" },
-      projects: [], // You can copy all your projects here if you want
+      projects: [
+        {
+          _id: "6921a870cf7a5b6c29be8879",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763813489/projects/sxp2c3le0czv6mdrfpmf.png",
+          imagePublicId: "projects/sxp2c3le0czv6mdrfpmf",
+          type: "Wordpress",
+          heading: "Asia Cosmetics & Beauty",
+          paragraph:
+            "asiaegy.com – WooCommerce E-Commerce Store\r\nA high-performance, responsive online store with secure payments, optimized for large product catalogs and fast user experience.",
+          skills: ["WooCommerce", "UX builder", "CSS", "HTML"],
+          siteLink: "https://asiaegy.com/",
+          __v: 0,
+        },
+        {
+          _id: "6921ab17cf7a5b6c29be88a4",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763814168/projects/om5qux6yjzbjzq6eh46c.png",
+          imagePublicId: "projects/om5qux6yjzbjzq6eh46c",
+          type: "Frontend React.js",
+          heading: "Veda Nutrition & Diet Coaching",
+          paragraph:
+            "letsveda.com – Online Nutrition Platform\r\nA fast, responsive website for booking licensed dietitian consultations and accessing personalized meal plans.",
+          skills: [
+            "React.js",
+            "RTK Query",
+            "Dynamic Data from WordPress",
+            "Responsive Design",
+            "Localization",
+          ],
+          siteLink: "https://letsveda.com/",
+          github: "https://github.com/Mostafa-Hamdi/veda-front",
+          __v: 0,
+        },
+        {
+          _id: "6921af14cf7a5b6c29be88ee",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763815190/projects/kve4sxw0hczuwm6n4gge.png",
+          imagePublicId: "projects/kve4sxw0hczuwm6n4gge",
+          type: "Fullstack Strapi",
+          heading: "Vendoor",
+          paragraph:
+            "Vendoor – Modern Web App\r\nA sleek, high-performance web application built on Vercel, featuring fast load times, scalable architecture, and a clean responsive interface.",
+          skills: ["Next.js", "Strapi", "RTK Query", "GSAP"],
+          siteLink: "https://vendoor-ten.vercel.app/",
+          github: "https://github.com/Mostafa-Hamdi/vendoor-front",
+          __v: 0,
+        },
+        {
+          _id: "6921b051cf7a5b6c29be8904",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763815506/projects/emrii2gjvy9knhyupkbl.png",
+          imagePublicId: "projects/emrii2gjvy9knhyupkbl",
+          type: "Wordpress",
+          heading: "ECO Performance Marketing",
+          paragraph:
+            "ecoperformancemarketing.com – Digital Marketing Agency\r\nA results-driven agency boosting e-commerce sales through data-driven campaigns, creative ads, CRO, and SEO across platforms like Meta, Google, TikTok, and Snapchat.",
+          skills: ["Wordpress", "HTML", "CSS"],
+          siteLink: "https://ecoperformancemarketing.com/",
+          __v: 0,
+        },
+        {
+          _id: "6921b13dcf7a5b6c29be8919",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763815742/projects/hxykmw8cqgn1tlikbo5r.png",
+          imagePublicId: "projects/hxykmw8cqgn1tlikbo5r",
+          type: "Shopify",
+          heading: "Tavan Gallery",
+          paragraph:
+            "tavangallery.com – Artificial Decor & Home Accents\r\nAn e-commerce site offering stylish artificial plants, fiberglass pots, and modern decor tables, with custom‑made options. Designed for high quality, aesthetic appeal, and easy shopping across devices.",
+          skills: ["Shopify", "HTML", "CSS"],
+          siteLink: "https://tavangallery.com/en",
+          __v: 0,
+        },
+        {
+          _id: "6921b477cf7a5b6c29be8930",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763816568/projects/af6pykfp08dmt9uyuwab.png",
+          imagePublicId: "projects/af6pykfp08dmt9uyuwab",
+          type: "Fullstack Node.js",
+          heading: "Portfolio Dashboard",
+          paragraph:
+            "portfolio dashboard gives a quick overview of all your work, including total projects, services, experiences, and subscribers. It highlights key activity updates in real time. A clean, organized layout helps you track your overall portfolio performance at a glance.",
+          skills: [
+            "Next.js",
+            "Node.js",
+            "RTK Query",
+            "Express.js",
+            "MongoDB",
+            "CRUD APIs",
+          ],
+          siteLink: "https://mostafadev-gamma.vercel.app/dashboard",
+          github: "https://github.com/Mostafa-Hamdi/portfolio-backend",
+          __v: 1,
+        },
+        {
+          _id: "6921b5b1cf7a5b6c29be895a",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763816882/projects/t1o2krp3aeucbcjrt4xb.png",
+          imagePublicId: "projects/t1o2krp3aeucbcjrt4xb",
+          type: "Zoho Sites",
+          heading: "New Top Trade – Animal Nutrition",
+          paragraph:
+            "New Top Trade is a specialized provider in the animal nutrition industry, offering feed additives, supplements, disinfectants, and antibiotics to support livestock and poultry health. With over 30 years of experience in veterinary distribution across Egypt, they partner with global leaders to deliver high-quality, efficient, and sustainable solutions.",
+          skills: ["Zoho Sites Builder", "HTML", "CSS", "JS"],
+          siteLink: "https://www.newtoptrades.com/",
+          __v: 0,
+        },
+        {
+          _id: "6921b6afcf7a5b6c29be8970",
+          image:
+            "https://res.cloudinary.com/dkqbmzwoy/image/upload/v1763817136/projects/va8dvjcas8ooztawebjj.png",
+          imagePublicId: "projects/va8dvjcas8ooztawebjj",
+          type: "Fullstack Node.js",
+          heading: "Weather Forecast",
+          paragraph:
+            "Weather Forecast Web App\r\nA clean, responsive web application that fetches real‑time weather data for any city using a weather API. Built for speed and usability, it delivers current conditions and forecast details with a modern UI and smooth performance.",
+          skills: ["React.js", "Node.js", "Express.js", "API Integration"],
+          siteLink: "https://weather-forecast-lyart.vercel.app/",
+          github: "https://github.com/Mostafa-Hamdi/Weather-App-Front",
+          __v: 0,
+        },
+      ],
       badge: "My Work\n",
       paragraph:
         "Explore my latest work showcasing innovation, creativity, and technical excellence\n\n",
@@ -108,4 +230,4 @@ const staticData = {
   },
 };
 
-module.exports = staticData;
+export default staticData;
