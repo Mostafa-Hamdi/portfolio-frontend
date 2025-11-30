@@ -8,6 +8,10 @@ import {
   Download,
   Sparkles,
 } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = ({ data }: any) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -45,33 +49,15 @@ Managed deployments, debugged issues, and optimized website performance for reli
 Guided students in building responsive, modern websites and interactive UI components.  
 Provided hands-on debugging support and best practices for clean and maintainable code.  
 Mentored students on creating projects with practical applications and real-world web standards.`,
-      period: "jul 2025 - Aug 2025",
+      period: "Jul 2025 - Aug 2025",
     },
   ];
 
   useEffect(() => {
-    // Load GSAP from CDN
-    const script1 = document.createElement("script");
-    script1.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js";
-    script1.async = true;
+    const isMobile = window.innerWidth < 768;
 
-    const script2 = document.createElement("script");
-    script2.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js";
-    script2.async = true;
-
-    document.body.appendChild(script1);
-    document.body.appendChild(script2);
-
-    script2.onload = () => {
-      const gsap = window.gsap;
-      const ScrollTrigger = window.ScrollTrigger;
-      gsap.registerPlugin(ScrollTrigger);
-
-      const isMobile = window.innerWidth < 768;
-
-      // Header animations
+    // Header animations
+    if (badgeRef.current) {
       gsap.fromTo(
         badgeRef.current,
         { opacity: 0, scale: 0.8, y: 30 },
@@ -88,7 +74,9 @@ Mentored students on creating projects with practical applications and real-worl
           },
         },
       );
+    }
 
+    if (headingRef.current) {
       gsap.fromTo(
         headingRef.current,
         { opacity: 0, y: 40 },
@@ -104,8 +92,10 @@ Mentored students on creating projects with practical applications and real-worl
           },
         },
       );
+    }
 
-      // Profile card with 3D effect
+    // Profile card animation
+    if (profileCardRef.current) {
       gsap.fromTo(
         profileCardRef.current,
         { opacity: 0, x: -50, rotateY: -15 },
@@ -122,50 +112,52 @@ Mentored students on creating projects with practical applications and real-worl
           },
         },
       );
+    }
 
-      // Stats cards stagger
-      if (statsRef.current) {
-        gsap.fromTo(
-          statsRef.current.children,
-          { opacity: 0, scale: 0.8, y: 30 },
-          {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "back.out(1.5)",
-            scrollTrigger: {
-              trigger: statsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
+    // Stats cards
+    if (statsRef.current) {
+      gsap.fromTo(
+        statsRef.current.children,
+        { opacity: 0, scale: 0.8, y: 30 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
           },
-        );
-      }
+        },
+      );
+    }
 
-      // Skills stack animation
-      if (skillsRef.current) {
-        gsap.fromTo(
-          skillsRef.current.children,
-          { opacity: 0, x: -30, rotateX: -10 },
-          {
-            opacity: 1,
-            x: 0,
-            rotateX: 0,
-            duration: 0.5,
-            stagger: 0.12,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: skillsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
+    // Skills
+    if (skillsRef.current) {
+      gsap.fromTo(
+        skillsRef.current.children,
+        { opacity: 0, x: -30, rotateX: -10 },
+        {
+          opacity: 1,
+          x: 0,
+          rotateX: 0,
+          duration: 0.5,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: skillsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
           },
-        );
-      }
+        },
+      );
+    }
 
-      // Story section with slide effect
+    // Story
+    if (storyRef.current) {
       gsap.fromTo(
         storyRef.current,
         { opacity: 0, x: 50, rotateY: 10 },
@@ -182,54 +174,46 @@ Mentored students on creating projects with practical applications and real-worl
           },
         },
       );
+    }
 
-      // Experience cards cascade
-      if (experiencesRef.current) {
-        gsap.fromTo(
-          experiencesRef.current.children,
-          { opacity: 0, y: 40, x: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: experiencesRef.current,
-              start: "top 75%",
-              toggleActions: "play none none reverse",
-            },
+    // Experience cards
+    if (experiencesRef.current) {
+      gsap.fromTo(
+        experiencesRef.current.children,
+        { opacity: 0, y: 40, x: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: experiencesRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
           },
-        );
-      }
+        },
+      );
+    }
 
-      // Parallax effect for background blobs (desktop only)
-      if (!isMobile && sectionRef.current) {
-        const blobs = sectionRef.current.querySelectorAll(".bg-blob");
-        blobs.forEach((blob, index) => {
-          gsap.to(blob, {
-            y: index % 2 === 0 ? -50 : 50,
-            x: index % 2 === 0 ? 30 : -30,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          });
+    // Background blobs parallax
+    if (!isMobile && sectionRef.current) {
+      const blobs = sectionRef.current.querySelectorAll(".bg-blob");
+      blobs.forEach((blob, index) => {
+        gsap.to(blob, {
+          y: index % 2 === 0 ? -50 : 50,
+          x: index % 2 === 0 ? 30 : -30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
         });
-      }
-    };
-
-    return () => {
-      if (window.ScrollTrigger) {
-        window.ScrollTrigger.getAll().forEach((trigger: any) => trigger.kill());
-      }
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
-    };
+      });
+    }
   }, []);
 
   const skills = [
@@ -247,7 +231,7 @@ Mentored students on creating projects with practical applications and real-worl
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-3xl blur-3xl animate-pulse delay-700"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full"></div>
       </div>
 
@@ -263,7 +247,6 @@ Mentored students on creating projects with practical applications and real-worl
               {data?.badge}
             </span>
           </div>
-
           <h2
             ref={headingRef}
             className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6"
@@ -291,8 +274,8 @@ Mentored students on creating projects with practical applications and real-worl
                       <span className="text-5xl font-black bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                         {data?.personalInfo?.name
                           ?.split(" ")
-                          ?.map((n: any) => n[0])
-                          ?.join("")}
+                          .map((n: any) => n[0])
+                          .join("")}
                       </span>
                     </div>
                   </div>
@@ -340,7 +323,6 @@ Mentored students on creating projects with practical applications and real-worl
                     {data?.statics?.projects?.text}
                   </div>
                 </div>
-
                 <div className="p-4 rounded-2xl border border-blue-400/20 text-center hover:border-blue-400/40 transition-all duration-300">
                   <div className="text-3xl font-black bg-gradient-to-br from-blue-400 to-cyan-500 bg-clip-text text-transparent">
                     {data?.statics?.experience?.number}
@@ -357,7 +339,6 @@ Mentored students on creating projects with practical applications and real-worl
                   <Sparkles className="w-5 h-5 text-cyan-400" />
                   <h4 className="text-lg font-bold text-white">Tech Stack</h4>
                 </div>
-
                 {skills.map((stack, index) => (
                   <div
                     key={index}
