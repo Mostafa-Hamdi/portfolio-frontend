@@ -1,5 +1,12 @@
 // src/staticData.js
-
+// import veda from "@/public/vedaCover.png"
+// import asia from "@/public/asiaCover.png"
+// import eco from "@/public/ecoCover.png"
+// import dashboard from "@/public/dashboardCover.png"
+// import topTrade from "@/public/toptradeCover.png"
+// import tavan from "@/public/tavanCover.png"
+// import vendoor from "@/public/vendoorCover.png"
+// import weather from "@/public/weatherCover.png"
 const staticData = {
   data: {
     hero: {

@@ -230,7 +230,7 @@ const Services = ({ data }: any) => {
             {/* Button */}
             <button
               onClick={() => handleScrollTo("contact")}
-              className="relative px-16 py-6 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-400 text-white text-lg font-bold overflow-hidden group-hover:scale-105 group-hover:shadow-[0_20px_90px_rgba(6,182,212,0.0)] transition-all duration-500 border border-cyan-400/20"
+              className="relative px-5 md:px-16 py-6 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-400 text-white text-lg font-bold overflow-hidden group-hover:scale-105 group-hover:shadow-[0_20px_90px_rgba(6,182,212,0.0)] transition-all duration-500 border border-cyan-400/20"
             >
               {/* Content */}
               <div className="relative flex items-center gap-4">
