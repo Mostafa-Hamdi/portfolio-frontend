@@ -8,7 +8,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 const getData = async () => {
   try {
-    const response = await fetch("http://localhost:3001/landing");
+    const response = await fetch(
+      "https://portfolio-backend-ftux.onrender.com/landing",
+    );
     const data = await response.json();
     return data;
   } catch (Err) {

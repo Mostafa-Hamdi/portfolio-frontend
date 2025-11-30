@@ -17,13 +17,13 @@ const addSubscriber = (callback) => {
 
 // ===== Axios instance for refresh =====
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://portfolio-backend-ftux.onrender.com",
 });
 
 // ===== Custom baseQuery with refresh logic =====
 const baseQuery = async (args, api, extraOptions) => {
   const rawBaseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:3001",
+    baseUrl: "https://portfolio-backend-ftux.onrender.com",
     prepareHeaders: (headers, { endpoint }) => {
       const token = localStorage.getItem("token");
       //   const language = localStorage.getItem("Lan") || "en";
