@@ -6,13 +6,14 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import staticData from "@/app/staticData";
 const getData = async () => {
   try {
     const response = await fetch(
       "https://portfolio-backend-ftux.onrender.com/landing",
     );
     const data = await response.json();
-    return data;
+    return data?.data ? data : { data: staticData.data };
   } catch (Err) {
     console.log(Err);
   }
