@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from "react";
 const Projects = ({ data }: any) => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [showAll, setShowAll] = useState(false);
-  const headerRef = useRef(null);
-  const projectsRef = useRef([]);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<Array<HTMLDivElement | null>>([]);
 
   // Extract project types for filters
   const projectTypes = data?.projects
@@ -26,13 +26,11 @@ const Projects = ({ data }: any) => {
     ? filteredProjects
     : filteredProjects.slice(0, 6);
 
-  // Function to parse skills if they're stringified JSON
   const parseSkills = (skills: any[]) => {
     if (!skills || skills.length === 0) return [];
     return skills
       .map((skill) => {
         try {
-          // If it's a stringified array, parse it
           if (typeof skill === "string" && skill.startsWith("[")) {
             return JSON.parse(skill);
           }
@@ -45,22 +43,18 @@ const Projects = ({ data }: any) => {
   };
 
   useEffect(() => {
-    // Load GSAP scripts
     const loadGSAP = () => {
-      // Check if GSAP is already loaded
       if (typeof window !== "undefined" && (window as any).gsap) {
         initAnimations();
         return;
       }
 
-      // Load GSAP core
       const gsapScript = document.createElement("script");
       gsapScript.src =
         "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
       gsapScript.async = true;
 
       gsapScript.onload = () => {
-        // Load ScrollTrigger plugin
         const scrollTriggerScript = document.createElement("script");
         scrollTriggerScript.src =
           "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
@@ -88,10 +82,7 @@ const Projects = ({ data }: any) => {
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current,
-          {
-            opacity: 0,
-            y: 50,
-          },
+          { opacity: 0, y: 50 },
           {
             opacity: 1,
             y: 0,
@@ -112,11 +103,7 @@ const Projects = ({ data }: any) => {
         if (project) {
           gsap.fromTo(
             project,
-            {
-              opacity: 0,
-              y: 80,
-              scale: 0.9,
-            },
+            { opacity: 0, y: 80, scale: 0.9 },
             {
               opacity: 1,
               y: 0,
@@ -138,7 +125,6 @@ const Projects = ({ data }: any) => {
 
     loadGSAP();
 
-    // Cleanup
     return () => {
       if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
         (window as any).ScrollTrigger.getAll().forEach((trigger: any) =>
@@ -209,7 +195,9 @@ const Projects = ({ data }: any) => {
             return (
               <div
                 key={project._id}
-                ref={(el: any) => (projectsRef.current[index] = el)}
+                ref={(el: HTMLDivElement | null) => {
+                  projectsRef.current[index] = el;
+                }}
                 className="flex flex-column group relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-500 hover:-translate-y-2"
               >
                 {/* Image */}
@@ -220,13 +208,11 @@ const Projects = ({ data }: any) => {
                     alt={project.heading}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 relative flex flex-column flex-1">
-                  {/* Category Badge */}
                   <div className="absolute -top-3 right-6 z-20">
                     <span
                       className={`px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r ${gradient} text-white`}
@@ -243,7 +229,6 @@ const Projects = ({ data }: any) => {
                     {project.paragraph}
                   </p>
 
-                  {/* Technologies */}
                   {skills.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-6 flex-1">
                       {skills.map((tech: string, i: number) => (
@@ -257,7 +242,6 @@ const Projects = ({ data }: any) => {
                     </div>
                   )}
 
-                  {/* Links */}
                   <div className="flex gap-3">
                     <a
                       href={project.siteLink}
@@ -281,7 +265,6 @@ const Projects = ({ data }: any) => {
                   </div>
                 </div>
 
-                {/* Corner Glow Effect */}
                 <div
                   className={`absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 blur-3xl transition-all duration-700 rounded-full`}
                 ></div>
@@ -290,7 +273,6 @@ const Projects = ({ data }: any) => {
           })}
         </div>
 
-        {/* View All / Collapse Button */}
         {filteredProjects.length > 6 && (
           <div className="text-center mt-12">
             <button
