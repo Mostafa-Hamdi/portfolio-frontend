@@ -24,7 +24,7 @@ export default async function Home() {
       <HeroSection data={data?.data?.hero} />
       <Parteners />
       <About data={data?.data?.about} />
-      <Services data={data?.data?.servicesSection} />
+      <Services />
       <Projects data={data?.data?.projects} />
       <Contact data={data?.data?.contact} />
       <Footer />
