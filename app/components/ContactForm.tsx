@@ -53,7 +53,17 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      await addSubscriber(data).unwrap();
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbx5iFwGJf-SEi8O_RY2h90pKYhye8w_izKqJx6LQK-vIio5SDL8mr3nTXdqAPmzqYUn/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        },
+      );
 
       // ✅ Show success alert
       Swal.fire({
