@@ -1,8 +1,12 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { Send } from "lucide-react";
 import PhoneInput from "@/app/components/PhoneInput";
+import { useAddSubscriberMutation } from "../redux/services/api's/authApi";
+import Swal from "sweetalert2";
 
 interface ContactFormData {
   name: string;
@@ -11,23 +15,70 @@ interface ContactFormData {
   message: string;
 }
 
-export default function ContactForm() {
-  const { register, handleSubmit, control, reset, formState } =
-    useForm<ContactFormData>({
-      defaultValues: {
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      },
-    });
+// ✅ Yup validation schema
+const schema = yup.object({
+  name: yup.string().required("Name is required"),
+  email: yup
+    .string()
+    .email("Please enter a valid email address")
+    .required("Email is required"),
+  phone: yup
+    .string()
+    .matches(
+      /^\+?[0-9\s\-()]{6,20}$/,
+      "Enter a valid phone number with country code",
+    )
+    .required("Phone number is required"),
+  message: yup.string().required("Message is required"),
+});
 
-  const { errors, isSubmitting } = formState;
+export default function ContactForm() {
+  const [addSubscriber] = useAddSubscriberMutation();
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log("📩 Form Submitted:", data);
-    // TODO: Send to backend (API, email, etc.)
-    reset();
+    try {
+      await addSubscriber(data).unwrap();
+
+      // ✅ Show success alert
+      Swal.fire({
+        title: "Message Sent!",
+        text: "Thanks for reaching out — I’ll get back to you soon.",
+        icon: "success",
+        confirmButtonColor: "#06b6d4",
+        background: "#0f172a",
+        color: "#e2e8f0",
+      });
+
+      reset();
+    } catch (err) {
+      console.error("Submission error:", err);
+
+      // ❌ Show error alert
+      Swal.fire({
+        title: "Oops!",
+        text: "Something went wrong. Please try again later.",
+        icon: "error",
+        confirmButtonColor: "#06b6d4",
+        background: "#0f172a",
+        color: "#e2e8f0",
+      });
+    }
   };
 
   return (
@@ -44,7 +95,7 @@ export default function ContactForm() {
           <input
             type="text"
             placeholder="John Doe"
-            {...register("name", { required: "Name is required" })}
+            {...register("name")}
             className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition"
           />
           {errors.name && (
@@ -59,13 +110,7 @@ export default function ContactForm() {
           <input
             type="email"
             placeholder="john@example.com"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email address",
-              },
-            })}
+            {...register("email")}
             className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition"
           />
           {errors.email && (
@@ -82,18 +127,8 @@ export default function ContactForm() {
         <Controller
           name="phone"
           control={control}
-          rules={{
-            required: "Phone number is required",
-            validate: (value) => {
-              // Check if it's a valid phone number
-              if (!value) return "Phone number is required";
-
-              return true;
-            },
-          }}
           render={({ field }) => <PhoneInput {...field} />}
         />
-
         {errors.phone && (
           <p className="text-red-400 text-sm mt-1">{errors.phone.message}</p>
         )}
@@ -107,7 +142,7 @@ export default function ContactForm() {
         <textarea
           rows={6}
           placeholder="Tell me about your project..."
-          {...register("message", { required: "Message is required" })}
+          {...register("message")}
           className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition resize-none"
         />
         {errors.message && (
@@ -121,8 +156,13 @@ export default function ContactForm() {
         disabled={isSubmitting}
         className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:scale-105 transition flex items-center justify-center gap-2 disabled:opacity-50"
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
-        {!isSubmitting && <Send className="w-5 h-5" />}
+        {isSubmitting ? (
+          <span className="animate-pulse">Sending...</span>
+        ) : (
+          <>
+            Send Message <Send className="w-5 h-5" />
+          </>
+        )}
       </button>
     </form>
   );

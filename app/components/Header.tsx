@@ -2,13 +2,19 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import logo from "@/public/logo.png";
+import { Section } from "lucide-react";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [time, setTime] = useState(0);
   const [isClient, setIsClient] = useState(false);
-
+  const handleScrollTo = (id: string) => {
+    const section = document.getElementById(id.toLowerCase());
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   useEffect(() => {
     setIsClient(true);
 
@@ -43,8 +49,8 @@ const Header = () => {
   const menuItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
     { name: "Services", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -78,9 +84,9 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {menuItems.map((item, index) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
+                onClick={() => handleScrollTo(item.name)}
                 className="relative px-6 py-3 text-gray-300 hover:text-white font-medium transition-all duration-300 group rounded-full"
                 style={{
                   transform: isClient
@@ -91,13 +97,15 @@ const Header = () => {
                 <span className="relative z-10">{item.name}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:w-8 transition-all duration-300" />
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <button
+            <a
+              href="https://drive.google.com/uc?export=download&id=1xoYR8MhbbfuflN1xt5453n93FyBlth83"
+              rel="noopener noreferrer"
               className="relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full overflow-hidden group hover:scale-105 transition-transform duration-300"
               style={{
                 transform: isClient
@@ -108,8 +116,8 @@ const Header = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <span className="relative z-10">Get Started</span>
-            </button>
+              <span className="relative z-10">Download CV</span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -166,9 +174,13 @@ const Header = () => {
               </a>
             ))}
             <div className="px-6 pt-4">
-              <button className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300">
-                Get Started
-              </button>
+              <a
+                href="https://drive.google.com/uc?export=download&id=1xoYR8MhbbfuflN1xt5453n93FyBlth83"
+                rel="noopener noreferrer"
+                className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300"
+              >
+                Download CV
+              </a>
             </div>
           </nav>
         </div>

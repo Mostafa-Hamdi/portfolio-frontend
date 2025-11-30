@@ -1,26 +1,10 @@
 "use client";
-import {
-  Briefcase,
-  Settings,
-  Award,
-  TrendingUp,
-  Calendar,
-  Users,
-} from "lucide-react";
-import { useLayoutEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Briefcase, Settings, Award, Calendar, Users } from "lucide-react";
 
 const Page = () => {
-  const [userData, setUserData] = useState(null);
-  const presist = localStorage.getItem("persist:root");
+  const userData = useSelector((state: any) => state.auth.user);
 
-  useLayoutEffect(() => {
-    if (presist) {
-      const root = JSON.parse(presist);
-      setUserData(JSON.parse(root.auth).user);
-    }
-  }, []);
-
-  // Statistics data
   const stats = [
     {
       title: "Projects",
@@ -29,8 +13,6 @@ const Page = () => {
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50",
       textColor: "text-blue-600",
-      change: "+12.5%",
-      changeType: "increase",
     },
     {
       title: "Services",
@@ -39,8 +21,6 @@ const Page = () => {
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50",
       textColor: "text-purple-600",
-      change: "+8.3%",
-      changeType: "increase",
     },
     {
       title: "Experiences",
@@ -49,8 +29,6 @@ const Page = () => {
       color: "from-orange-500 to-red-500",
       bgColor: "bg-orange-50",
       textColor: "text-orange-600",
-      change: "+5.7%",
-      changeType: "increase",
     },
     {
       title: "Subscribers",
@@ -59,12 +37,8 @@ const Page = () => {
       color: "from-emerald-500 to-teal-500",
       bgColor: "bg-emerald-50",
       textColor: "text-emerald-600",
-      change: "+15.2%",
-      changeType: "increase",
     },
   ];
-
-  console.log(userData);
 
   return (
     <main className="flex-1 p-6 lg:p-8 overflow-auto bg-gradient-to-br from-slate-50 via-blue-50 to-white min-h-screen">
@@ -74,7 +48,7 @@ const Page = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Welcome back,{" "}
             <span className="capitalize bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              {userData?.username || "Guest"}
+              {userData?.user?.username || "Guest"}
             </span>
             ! 👋
           </h2>

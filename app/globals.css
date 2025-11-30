@@ -146,3 +146,6 @@ body {
 .react-tel-input .flag-dropdown.open .selected-flag {
   background: none !important;
 }
+.flex-column {
+  flex-direction: column;
+}

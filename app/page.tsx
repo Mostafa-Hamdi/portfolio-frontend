@@ -4,16 +4,30 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-
-export default function Home() {
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+const getData = async () => {
+  try {
+    const response = await fetch("http://localhost:3001/landing");
+    const data = await response.json();
+    return data;
+  } catch (Err) {
+    console.log(Err);
+  }
+};
+export default async function Home() {
+  const data = await getData();
+  console.log(data);
   return (
     <>
-      <HeroSection />
+      <Header />
+      <HeroSection data={data?.data?.hero} />
       <Parteners />
-      <About />
-      <Services />
-      <Projects />
-      <Contact />
+      <About data={data?.data?.about} />
+      <Services data={data?.data?.servicesSection} />
+      <Projects data={data?.data?.projects} />
+      <Contact data={data?.data?.contact} />
+      <Footer />
     </>
   );
 }

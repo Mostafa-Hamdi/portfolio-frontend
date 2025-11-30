@@ -8,38 +8,49 @@ import {
   Linkedin,
   Twitter,
   ArrowUp,
+  MessageCircle,
+  MessageCircleHeart,
+  MessageCircleMore,
 } from "lucide-react";
 import logoVector from "@/public/vector.png";
 import Image from "next/image";
+import whatsapp from "@/public/whatsapp.png";
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
+  const handleScrollTo = (id: string) => {
+    const section = document.getElementById(`${id}`);
+    section?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
   const footerLinks = {
     navigation: [
-      { name: "Home", href: "#home" },
-      { name: "About", href: "#about" },
-      { name: "Services", href: "#services" },
-      { name: "Projects", href: "#projects" },
-      { name: "Contact", href: "#contact" },
+      { name: "Home" },
+      { name: "About" },
+      { name: "Services" },
+      { name: "Portfolio" },
+      { name: "Contact" },
     ],
     services: [
-      { name: "Web Development", href: "#" },
-      { name: "Mobile Solutions", href: "#" },
-      { name: "E-Commerce", href: "#" },
-      { name: "CMS Development", href: "#" },
+      { name: "Web Development" },
+      { name: "E-Commerce" },
+      { name: "CMS Development" },
     ],
   };
 
   const socialLinks = [
-    { icon: Github, link: "#", name: "Github" },
-    { icon: Linkedin, link: "#", name: "LinkedIn" },
-    { icon: Twitter, link: "#", name: "Twitter" },
+    { icon: Github, link: "https://github.com/Mostafa-Hamdi", name: "Github" },
+    {
+      icon: Linkedin,
+      link: "https://www.linkedin.com/in/mostafa-hamdi",
+      name: "LinkedIn",
+    },
   ];
 
   return (
-    <footer className="relative bg-slate-950\/80 border-t border-gray-800">
+    <footer className="relative bg-slate-950/80 border-t border-gray-800">
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
@@ -83,13 +94,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.navigation.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center gap-2 group"
+                  <button
+                    onClick={() => handleScrollTo(link?.name?.toLowerCase())}
+                    className="cursor-pointer text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center gap-2 group"
                   >
                     <span className="w-0 h-0.5 bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -103,13 +114,10 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center gap-2 group"
-                  >
+                  <button className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center gap-2 group">
                     <span className="w-0 h-0.5 bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -153,14 +161,14 @@ const Footer = () => {
         <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
           <p className="text-gray-400 text-sm text-center md:text-left">
             © {new Date().getFullYear()} Mostafa Hamdi. Made with{" "}
             <Heart className="w-4 h-4 inline text-red-500 animate-pulse" /> All
             rights reserved.
           </p>
 
-          <div className="flex items-center gap-6 text-sm">
+          {/* <div className="flex items-center gap-6 text-sm">
             <a
               href="#"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
@@ -173,8 +181,19 @@ const Footer = () => {
             >
               Terms of Service
             </a>
-          </div>
+          </div> */}
         </div>
+
+        {/* WhatsApp Button - Above Scroll to Top */}
+        <a
+          href="https://wa.me/201207715484"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-24 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-green-500/50 z-50 group"
+          aria-label="Contact on WhatsApp"
+        >
+          <Image src={whatsapp} width={50} height={50} alt="" className="w-8" />
+        </a>
 
         {/* Scroll to Top Button */}
         <button
