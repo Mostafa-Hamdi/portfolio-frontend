@@ -3,18 +3,22 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import logo from "@/public/logo.png";
 import { Section } from "lucide-react";
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [time, setTime] = useState(0);
   const [isClient, setIsClient] = useState(false);
+
   const handleScrollTo = (id: string) => {
     const section = document.getElementById(id.toLowerCase());
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMobileMenuOpen(false); // safe, no style change
   };
+
   useEffect(() => {
     setIsClient(true);
 
@@ -29,6 +33,13 @@ const Header = () => {
       });
     };
 
+    // ✅ ADD THIS (KEY FIX)
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     let frame: any;
     const animate = () => {
       setTime(Date.now());
@@ -37,11 +48,13 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize); // ✅ ADD
     animate();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize); // ✅ ADD
       cancelAnimationFrame(frame);
     };
   }, []);
@@ -104,7 +117,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://drive.google.com/uc?export=download&id=1xoYR8MhbbfuflN1xt5453n93FyBlth83"
+              href="https://drive.google.com/file/d/1qylUkoV7_FqYvPlNtMQpdqRY465wDGPT/view?usp=drive_link"
               rel="noopener noreferrer"
               className="relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full overflow-hidden group hover:scale-105 transition-transform duration-300"
               style={{
@@ -173,43 +186,8 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <div className="px-6 pt-4">
-              <a
-                href="https://drive.google.com/uc?export=download&id=1xoYR8MhbbfuflN1xt5453n93FyBlth83"
-                rel="noopener noreferrer"
-                className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:scale-105 transition-transform duration-300"
-              >
-                Download CV
-              </a>
-            </div>
           </nav>
         </div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-0 right-20 w-20 h-20 pointer-events-none">
-        <div
-          className="w-3 h-3 bg-cyan-400/30 rounded-full absolute top-4 right-4"
-          style={{
-            transform: isClient
-              ? `
-              translateX(${Math.sin(time * 0.001) * 10}px)
-              translateY(${Math.cos(time * 0.0015) * 8}px)
-            `
-              : "translate(0px, 0px)",
-          }}
-        />
-        <div
-          className="w-2 h-2 bg-blue-400/40 rounded-full absolute top-8 right-12"
-          style={{
-            transform: isClient
-              ? `
-              translateX(${Math.sin(time * 0.0012 + 1) * 8}px)
-              translateY(${Math.cos(time * 0.0008 + 1) * 10}px)
-            `
-              : "translate(0px, 0px)",
-          }}
-        />
       </div>
     </header>
   );

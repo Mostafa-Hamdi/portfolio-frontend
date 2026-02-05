@@ -42,7 +42,8 @@ export default async function Home() {
       <Parteners />
       <About data={data.data.about} />
       <Services />
-      <Projects data={data.data.projects} />
+      {/* data={data.data.projects} */}
+      <Projects />
       <Contact data={data.data.contact} />
       <Footer />
     </>
