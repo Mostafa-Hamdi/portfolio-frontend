@@ -3,7 +3,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import asia from "@/public/asia.png";
 import veda from "@/public/veda.png";
-import tavan from "@/public/tavan.avif";
+import tavan from "@/public/tavan.webp";
 import newtoptrade from "@/public/newtoptrade.png";
 import ecomarketing from "@/public/ecomarketing.webp";
 import drmahmoud from "@/public/drmahmoud.png";
