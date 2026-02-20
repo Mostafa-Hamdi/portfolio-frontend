@@ -304,7 +304,7 @@ Mentored students on creating projects with practical applications and real-worl
                 </div>
 
                 <a
-                  href="https://drive.google.com/file/d/1qylUkoV7_FqYvPlNtMQpdqRY465wDGPT/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/13xktLe_E72t19XKEcATsnnb_4QJospcY/view?usp=drive_link"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
