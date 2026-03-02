@@ -194,4 +194,3 @@ const Header = () => {
 };
 
 export default Header;
-<h2 style="color: #192434;">الدول المتاحة</h2>;
