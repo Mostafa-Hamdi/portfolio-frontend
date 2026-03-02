@@ -32,7 +32,7 @@ const data = {
       heading: "Aura CRM System",
       paragraph:
         "Custom CRM solution for managing customers, pipelines, and business growth.",
-      type: "Next.js - Admin Dashboard",
+      type: "Next.js - Dashboard",
       image: "/auraScreen.png",
       siteLink: "https://auracrm-pi.vercel.app",
       github: "",
@@ -104,6 +104,17 @@ const data = {
       siteLink: "https://newtoptrade.com/",
       github: "",
       skills: ["ZohoSites"],
+    },
+    {
+      _id: "12",
+      heading: "Fasttracks",
+      paragraph:
+        "Fast Tracks Travel and Tourism Company is a Saudi company specializing in business services, travel, and tourism solutions.",
+      type: "WordPress",
+      image: "/fasttracksCover.png",
+      siteLink: "https://fasttracks.online/",
+      github: "",
+      skills: ["WordPress", "Elementor PRO", "ACF"],
     },
   ],
 };

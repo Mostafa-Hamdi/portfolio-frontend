@@ -149,3 +149,59 @@ body {
 .flex-column {
   flex-direction: column;
 }
+
+/* ******************************************* */
+
+.date-input {
+  padding: 14px !important;
+  height: 36px;
+}
+
+.select-input {
+  height: 36px;
+}
+
+.btn {
+  height: 36px;
+}
+
+.select-input {
+  height: 36px;
+}
+
+.select-wrapper {
+  height: 36px;
+}
+
+/* ************************** */
+/* change it  */
+
+.fixed-col-2 {
+  right: 99px !important;
+  box-shadow: -4px 0 12px rgba(102, 126, 234, 0.25);
+}
+
+/* to be */
+.fixed-col-2 {
+  right: 80px !important;
+  box-shadow: -4px 0 12px rgba(102, 126, 234, 0.25);
+}
+
+/* and this */
+.fixed-col-1 {
+  right: 0 !important;
+  box-shadow: -4px 0 12px rgba(102, 126, 234, 0.25);
+}
+
+/* to be */
+
+.fixed-col-1 {
+  right: 0 !important;
+  box-shadow: -4px 0 12px rgba(102, 126, 234, 0.25);
+  width: 143px;
+}
+
+/* ************************************* */
+.data-table thead tr:nth-child(2) th:not(:nth-child(1), :nth-child(2)) {
+  padding-bottom: 10px;
+}

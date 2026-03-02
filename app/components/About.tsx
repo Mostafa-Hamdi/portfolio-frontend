@@ -25,29 +25,48 @@ const About = ({ data }: any) => {
 
   const experiences = [
     {
-      role: "Frontend & Wordpress Developer",
+      role: "Web Developer (Full-time, Hybrid)",
+      company: "Fasttracks — Riyadh, Saudi Arabia",
+      description: `Working as a full-time hybrid web developer at Fasttracks, a Saudi company headquartered in Riyadh.  
+Building and maintaining modern web applications using current frontend and backend technologies.  
+Collaborating with cross-functional teams to deliver high-quality digital solutions.  
+Contributing to the company's web presence and internal tools development.`,
+      period: "Feb 2026 - Present",
+    },
+    {
+      role: "Frontend & Wordpress Developer (Part-time)",
+      company: "ABG Egypt",
+      description: `Continuing to support and maintain web projects on a part-time basis.  
+Developing and updating WordPress and React-based websites as needed.  
+Providing ongoing technical support and implementing new features.`,
+      period: "Mar 2026 - Present",
+    },
+    {
+      role: "Frontend & Wordpress Developer (Full-time)",
       company: "ABG Egypt",
       description: `Developed native and framework-based websites using React and WordPress.  
 Implemented headless WordPress solutions integrated with React for dynamic and modern web applications.  
 Debugged and maintained systems to ensure smooth performance and reliability.  
 Designed and built a responsive SFA (Sales Force Automation) dashboard with modern UI for improved user experience and efficiency.`,
-      period: "Jul 2024 - Present",
+      period: "Jul 2024 - Jan 2026",
     },
     {
-      role: "Wordpress Developer",
-      company: "Spunto",
-      description: `Developed and customized WordPress websites, including themes and plugins.  
-Implemented responsive designs using HTML, CSS, and JavaScript.  
-Integrated WordPress with modern front-end frameworks for headless setups.  
-Managed deployments, debugged issues, and optimized website performance for reliability and speed.`,
-      period: "Jun 2025 - Present",
+      role: "Freelance Web Developer",
+      company: "Freelance",
+      description: `Delivered client projects across e-commerce and corporate websites using React, WordPress, WooCommerce, Shopify, and Zoho Sites.  
+
+Asia Store (WooCommerce): Built a scalable e-commerce store with custom payment and shipping configurations.  
+NewTopTrades (Zoho Sites): Developed a corporate website with SEO optimization and fully responsive UI.  
+Tavan Gallery (Shopify): Created a responsive storefront with improved performance and optimized user experience.  
+EcoPerformance Marketing (WordPress): Developed a high-performance corporate website with modern UX and clean design architecture.`,
+      period: "2023 - Present",
     },
     {
       role: "Instructor",
       company: "AiArena Academy",
-      description: `Taught web development fundamentals, focusing on HTML, CSS, and JavaScript.  
-Guided students in building responsive, modern websites and interactive UI components.  
-Provided hands-on debugging support and best practices for clean and maintainable code.  
+      description: `Taught web development fundamentals, focusing on HTML, CSS, and JavaScript.
+Guided students in building responsive, modern websites and interactive UI components.
+Provided hands-on debugging support and best practices for clean and maintainable code.
 Mentored students on creating projects with practical applications and real-world web standards.`,
       period: "Jul 2025 - Aug 2025",
     },
@@ -304,7 +323,7 @@ Mentored students on creating projects with practical applications and real-worl
                 </div>
 
                 <a
-                  href="https://drive.google.com/file/d/13xktLe_E72t19XKEcATsnnb_4QJospcY/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/1Vl2u7q6yN1R-K7dNw2OLDRPze9kiH0B_/view?usp=sharing"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
@@ -363,9 +382,7 @@ Mentored students on creating projects with practical applications and real-worl
             </div>
           </div>
 
-          {/* Right Content */}
           <div className="lg:col-span-2 space-y-12">
-            {/* Story */}
             <div
               ref={storyRef}
               className="p-8 rounded-3xl border border-cyan-400/20 hover:border-cyan-400/30 transition-all duration-300"
@@ -379,7 +396,6 @@ Mentored students on creating projects with practical applications and real-worl
               </p>
             </div>
 
-            {/* Experience */}
             <div>
               <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                 <div className="w-1 h-8 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>

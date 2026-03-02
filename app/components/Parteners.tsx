@@ -11,6 +11,7 @@ import aura from "@/public/aura.png";
 import kreaz from "@/public/kreaz.webp";
 import saqr from "@/public/saqr.webp";
 import zeiia from "@/public/zeiia.png";
+import fasttracks from "@/public/fasttracks.webp";
 const Partners = () => {
   return (
     <div className="relative rotate-[-1deg] py-6 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent border-y border-cyan-400/10">
@@ -51,6 +52,10 @@ const Partners = () => {
           <div className="w-1 h-1 bg-cyan-400/50 rounded-full"></div>
           <div className="text-xl font-semibold hover:text-cyan-400 transition-colors">
             <Image src={ecomarketing} alt="" className="w-[150px]" />
+          </div>
+          <div className="w-1 h-1 bg-cyan-400/50 rounded-full"></div>
+          <div className="text-xl font-semibold hover:text-cyan-400 transition-colors">
+            <Image src={fasttracks} alt="" className="w-[150px]" />
           </div>
         </div>
       </Marquee>
