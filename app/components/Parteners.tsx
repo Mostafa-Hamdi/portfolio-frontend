@@ -16,7 +16,7 @@ import kion from "@/public/kionlogo.webp";
 import almatbakh from "@/public/almatbakhlogo.webp";
 import babel from "@/public/babellogo.webp";
 import ruqyah from "@/public/ruqyahlogo.webp";
-import info from "@/public/infologo.png";
+import info from "@/public/info.webp";
 const Partners = () => {
   return (
     <div className="relative rotate-[-1deg] py-6 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent border-y border-cyan-400/10">
