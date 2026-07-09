@@ -16,17 +16,7 @@ const data = {
     "Explore my latest work showcasing innovation, creativity, and technical excellence",
   viewBtn: "View All Projects",
   projects: [
-    {
-      _id: "7",
-      heading: "Zeiia",
-      paragraph:
-        "Zeiia is a software house specializing in web development and digital solutions.",
-      type: "Next.js",
-      image: "/zeiiaScreen.png",
-      siteLink: "https://zeiia.vercel.app/",
-      github: "",
-      skills: ["Next.js", "Tailwind CSS"],
-    },
+   
     {
       _id: "5",
       heading: "Aura CRM System",
@@ -50,41 +40,7 @@ const data = {
       github: "",
       skills: ["WordPress", "WooCommerce", "Custom Development"],
     },
-
-    {
-      _id: "3",
-      heading: "EcoPerformance Marketing",
-      paragraph:
-        "High-conversion marketing platform built for scalability and performance.",
-      type: "WordPress",
-      image: "/ecoMarketingScreen.png",
-      siteLink: "https://ecoperformancemarketing.com/",
-      github: "",
-      skills: ["WordPress", "SEO", "Custom Theme"],
-    },
-    {
-      _id: "4",
-      heading: "Saqr Sahraan Store",
-      paragraph:
-        "Outdoor & camping e-commerce platform for premium gear in the Middle East.",
-      type: "WooCommerce",
-      image: "/saqrScreen.jpg",
-      siteLink: "https://www.d-falcon.com/",
-      github: "",
-      skills: ["Custom Development", "E-commerce"],
-    },
-    {
-      _id: "2",
-      heading: "Asia Healthcare Store",
-      paragraph:
-        "A leading health & wellness online store offering quality medical and lifestyle products.",
-      type: "WooCommerce",
-      image: "/asiaCover.png",
-      siteLink: "https://asiaegy.com/",
-      github: "",
-      skills: ["WordPress", "UI/UX", "Performance"],
-    },
-    {
+      {
       _id: "8",
       heading: "Veda",
       paragraph: "Veda is made by using React.js and Headless WordPress.",
@@ -95,15 +51,70 @@ const data = {
       skills: ["React.js", "Headless WordPress"],
     },
     {
-      _id: "11",
-      heading: "Newtoptrade",
+      _id: "13",
+      heading: "Lenixmedia",
       paragraph:
-        "Newtoptrade is a B2B marketplace for importing and exporting products.",
-      type: "ZohoSites",
-      image: "/newtoptradeScreen.png",
-      siteLink: "https://newtoptrade.com/",
+        "Lenixmedia is a UK-based digital agency website built with a clean, modern WordPress setup.",
+      type: "WordPress",
+      image: "/lenix.png",
+      siteLink: "https://lenixmedia.co.uk/",
       github: "",
-      skills: ["ZohoSites"],
+      skills: ["WordPress", "Elementor PRO"],
+    },
+    {
+      _id: "14",
+      heading: "Kion Electric",
+      paragraph:
+        "Kion is an e-commerce store for electrical products, built for smooth browsing and secure checkout.",
+      type: "WooCommerce",
+      image: "/kion.png",
+      siteLink: "https://kionelectric.com",
+      github: "",
+      skills: ["WordPress", "WooCommerce", "E-commerce"],
+    },
+    {
+      _id: "15",
+      heading: "Babel",
+      paragraph:
+        "Babel is a modern WordPress website focused on clean design and fast performance.",
+      type: "WordPress",
+      image: "/babel.png",
+      siteLink: "https://aquamarine-ape-121163.hostingersite.com/",
+      github: "",
+      skills: ["WordPress", "Custom Theme"],
+    },
+    {
+      _id: "16",
+      heading: "Al-Matbakh",
+      paragraph:
+        "Al-Matbakh is a WordPress blogging platform sharing recipes and culinary content.",
+      type: "WordPress - Blog",
+      image: "/almatbakh.png",
+      siteLink: "https://al-matbakh.com/",
+      github: "",
+      skills: ["WordPress", "Blog"],
+    },
+    {
+      _id: "17",
+      heading: "Info Magazine",
+      paragraph:
+        "Info Magazine is a WordPress-powered online magazine delivering news and articles.",
+      type: "WordPress - Blog",
+      image: "/info.png",
+      siteLink: "https://info-magazine.com/",
+      github: "",
+      skills: ["WordPress", "Blog"],
+    },
+    {
+      _id: "18",
+      heading: "Al-Ruqyah",
+      paragraph:
+        "Al-Ruqyah is a WordPress blog site providing religious and educational content.",
+      type: "WordPress - Blog",
+      image: "/alruqyah.png",
+      siteLink: "https://al-ruqyah.com/",
+      github: "",
+      skills: ["WordPress", "Blog"],
     },
     {
       _id: "12",
@@ -115,6 +126,53 @@ const data = {
       siteLink: "https://fasttracks.online/",
       github: "",
       skills: ["WordPress", "Elementor PRO", "ACF"],
+    },
+   
+    {
+      _id: "4",
+      heading: "Saqr Sahraan Store",
+      paragraph:
+        "Outdoor & camping e-commerce platform for premium gear in the Middle East.",
+      type: "WooCommerce",
+      image: "/saqrScreen.jpg",
+      siteLink: "https://www.d-falcon.com/",
+      github: "",
+      skills: ["Custom Development", "E-commerce"],
+    },
+   
+  
+    {
+      _id: "11",
+      heading: "Newtoptrade",
+      paragraph:
+        "Newtoptrade is a B2B marketplace for importing and exporting products.",
+      type: "ZohoSites",
+      image: "/newtoptradeScreen.png",
+      siteLink: "https://newtoptrade.com/",
+      github: "",
+      skills: ["ZohoSites"],
+    },
+     {
+      _id: "3",
+      heading: "EcoPerformance Marketing",
+      paragraph:
+        "High-conversion marketing platform built for scalability and performance.",
+      type: "WordPress",
+      image: "/ecoMarketingScreen.png",
+      siteLink: "https://ecoperformancemarketing.com/",
+      github: "",
+      skills: ["WordPress", "SEO", "Custom Theme"],
+    },
+     {
+      _id: "7",
+      heading: "Zeiia",
+      paragraph:
+        "Zeiia is a software house specializing in web development and digital solutions.",
+      type: "Next.js",
+      image: "/zeiiaScreen.png",
+      siteLink: "https://zeiia.vercel.app/",
+      github: "",
+      skills: ["Next.js", "Tailwind CSS"],
     },
   ],
 };
@@ -235,7 +293,6 @@ const Projects = () => {
   return (
     <section className="py-10 relative overflow-hidden" id="portfolio">
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <div ref={headerRef} className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/20 mb-6">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
