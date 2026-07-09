@@ -100,7 +100,7 @@ const data = {
       paragraph:
         "Info Magazine is a WordPress-powered online magazine delivering news and articles.",
       type: "WordPress - Blog",
-      image: "/info.png",
+      image: "/infologo.png",
       siteLink: "https://info-magazine.com/",
       github: "",
       skills: ["WordPress", "Blog"],
