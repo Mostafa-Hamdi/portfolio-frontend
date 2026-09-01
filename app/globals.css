@@ -1,13 +1,31 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Original portfolio palette — Tailwind cyan-400/blue-500 */
+  --color-brand-navy: #061420;
+  --color-brand-navy-light: #0d2634;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-cyan-tint: #67e8f9;
+  --color-brand-blue: #3b82f6;
+  --color-brand-slate: #45606e;
+
+  /* Theme-aware surface tokens (flip with [data-theme]) */
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-elevated-strong: var(--surface-elevated-strong);
+  --color-surface-border: var(--surface-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-text-faint-2: var(--text-faint-2);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -137,9 +155,75 @@
   --bg-gradient-two: linear-gradient(135deg, #0a0f1e 0%, #1e90ff 100%);
   --bg-gradient-three: radial-gradient(circle at top right, #1e90ff, #0a0f1e);
 }
+:root,
+[data-theme="dark"] {
+  --surface: #061420;
+  --surface-elevated: rgba(255, 255, 255, 0.04);
+  --surface-elevated-strong: rgba(255, 255, 255, 0.08);
+  --surface-border: rgba(34, 211, 238, 0.2);
+  --text-primary: #ffffff;
+  --text-muted: #c2cbd1;
+  --text-faint: #9aa5ad;
+  --text-faint-2: #6f7a83;
+}
+
+[data-theme="light"] {
+  --surface: #f3f8fa;
+  --surface-elevated: rgba(6, 20, 32, 0.035);
+  --surface-elevated-strong: rgba(6, 20, 32, 0.07);
+  --surface-border: rgba(0, 140, 168, 0.25);
+  --text-primary: #061420;
+  --text-muted: #33495a;
+  --text-faint: #45606e;
+  --text-faint-2: #5b7280;
+}
+
 body {
-  background: #061420;
+  background-color: var(--surface);
+  color: var(--text-primary);
   overflow-x: hidden;
+}
+
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* Luxury scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee var(--surface);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #22d3ee, #3b82f6);
+  background-clip: padding-box;
+  border: 2.5px solid var(--surface);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(180deg, #67e8f9, #3b82f6);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--surface);
 }
 
 .selected-flag:hover,

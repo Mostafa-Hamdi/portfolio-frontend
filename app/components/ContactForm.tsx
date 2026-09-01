@@ -4,9 +4,16 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Send } from "lucide-react";
-import PhoneInput from "@/app/components/PhoneInput";
-import { useAddSubscriberMutation } from "../redux/services/api's/authApi";
+import dynamic from "next/dynamic";
 import Swal from "sweetalert2";
+import { useApp } from "../providers";
+
+const PhoneInput = dynamic(() => import("@/app/components/PhoneInput"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[50px] rounded-[14px] bg-surface-elevated border border-surface-border animate-pulse" />
+  ),
+});
 
 interface ContactFormData {
   name: string;
@@ -15,25 +22,19 @@ interface ContactFormData {
   message: string;
 }
 
-// ✅ Yup validation schema
-const schema = yup.object({
-  name: yup.string().required("Name is required"),
-  email: yup
-    .string()
-    .email("Please enter a valid email address")
-    .required("Email is required"),
-  phone: yup
-    .string()
-    .matches(
-      /^\+?[0-9\s\-()]{6,20}$/,
-      "Enter a valid phone number with country code",
-    )
-    .required("Phone number is required"),
-  message: yup.string().required("Message is required"),
-});
-
 export default function ContactForm() {
-  const [addSubscriber] = useAddSubscriberMutation();
+  const { t } = useApp();
+  const errs = t.contact.form.errors;
+
+  const schema = yup.object({
+    name: yup.string().required(errs.name),
+    email: yup.string().email(errs.email).required(errs.email),
+    phone: yup
+      .string()
+      .matches(/^\+?[0-9\s\-()]{6,20}$/, errs.phone)
+      .required(errs.phone),
+    message: yup.string().required(errs.message),
+  });
 
   const {
     register,
@@ -54,7 +55,7 @@ export default function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbx5iFwGJf-SEi8O_RY2h90pKYhye8w_izKqJx6LQK-vIio5SDL8mr3nTXdqAPmzqYUn/exec",
+        "https://script.google.com/macros/s/AKfycbwHPBPo4NIhk7oj3Q1dBulwouKY9j6yqfd3wpWwkjk9PqnGXajKiESah14-ZquqgBrnSA/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -65,13 +66,12 @@ export default function ContactForm() {
         },
       );
 
-      // ✅ Show success alert
       Swal.fire({
-        title: "Message Sent!",
-        text: "Thanks for reaching out — I’ll get back to you soon.",
+        title: t.contact.form.successTitle,
+        text: t.contact.form.successText,
         icon: "success",
-        confirmButtonColor: "#06b6d4",
-        background: "#0f172a",
+        confirmButtonColor: "#00b8db",
+        background: "#061420",
         color: "#e2e8f0",
       });
 
@@ -79,13 +79,12 @@ export default function ContactForm() {
     } catch (err) {
       console.error("Submission error:", err);
 
-      // ❌ Show error alert
       Swal.fire({
-        title: "Oops!",
-        text: "Something went wrong. Please try again later.",
+        title: t.contact.form.errorTitle,
+        text: t.contact.form.errorText,
         icon: "error",
-        confirmButtonColor: "#06b6d4",
-        background: "#0f172a",
+        confirmButtonColor: "#00b8db",
+        background: "#061420",
         color: "#e2e8f0",
       });
     }
@@ -94,19 +93,19 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-8 rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-cyan-400/20 space-y-6"
+      className="p-8 rounded-3xl bg-gradient-to-br from-surface-elevated to-transparent border border-brand-cyan/20 space-y-6"
     >
       {/* Name + Email */}
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-white font-semibold mb-2 text-sm">
-            Your Name
+          <label className="block text-text-primary font-semibold mb-2 text-sm">
+            {t.contact.form.name}
           </label>
           <input
             type="text"
-            placeholder="John Doe"
+            placeholder={t.contact.form.namePlaceholder}
             {...register("name")}
-            className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition"
+            className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-surface-border text-text-primary placeholder-text-faint-2 focus:border-brand-cyan/50 focus:outline-none transition"
           />
           {errors.name && (
             <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
@@ -114,14 +113,14 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-white font-semibold mb-2 text-sm">
-            Your Email
+          <label className="block text-text-primary font-semibold mb-2 text-sm">
+            {t.contact.form.email}
           </label>
           <input
             type="email"
-            placeholder="john@example.com"
+            placeholder={t.contact.form.emailPlaceholder}
             {...register("email")}
-            className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition"
+            className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-surface-border text-text-primary placeholder-text-faint-2 focus:border-brand-cyan/50 focus:outline-none transition"
           />
           {errors.email && (
             <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
@@ -131,8 +130,8 @@ export default function ContactForm() {
 
       {/* Phone */}
       <div>
-        <label className="block text-white font-semibold mb-2 text-sm">
-          Phone Number
+        <label className="block text-text-primary font-semibold mb-2 text-sm">
+          {t.contact.form.phone}
         </label>
         <Controller
           name="phone"
@@ -146,14 +145,14 @@ export default function ContactForm() {
 
       {/* Message */}
       <div>
-        <label className="block text-white font-semibold mb-2 text-sm">
-          Message
+        <label className="block text-text-primary font-semibold mb-2 text-sm">
+          {t.contact.form.message}
         </label>
         <textarea
           rows={6}
-          placeholder="Tell me about your project..."
+          placeholder={t.contact.form.messagePlaceholder}
           {...register("message")}
-          className="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none transition resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-surface-elevated border border-surface-border text-text-primary placeholder-text-faint-2 focus:border-brand-cyan/50 focus:outline-none transition resize-none"
         />
         {errors.message && (
           <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>
@@ -164,13 +163,13 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:scale-105 transition flex items-center justify-center gap-2 disabled:opacity-50"
+        className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-bold hover:scale-105 transition flex items-center justify-center gap-2 disabled:opacity-50"
       >
         {isSubmitting ? (
-          <span className="animate-pulse">Sending...</span>
+          <span className="animate-pulse">{t.contact.form.submitting}</span>
         ) : (
           <>
-            Send Message <Send className="w-5 h-5" />
+            {t.contact.form.submit} <Send className="w-5 h-5" />
           </>
         )}
       </button>

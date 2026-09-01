@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Hexagonal "chip" frame -->
+  <polygon points="150,18 266,86 266,214 150,282 34,214 34,86"
+           fill="none" stroke="#061420" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Interlocked M / H monogram -->
+  <g fill="none" stroke="#061420" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="90" y1="88" x2="90" y2="212"/>
+    <line x1="210" y1="88" x2="210" y2="212"/>
+    <polyline points="90,88 150,148 210,88"/>
+    <line x1="90" y1="150" x2="210" y2="150"/>
+  </g>
+
+  <!-- Gem accent in brand cyan -->
+  <rect x="141" y="141" width="18" height="18" fill="#00b8db" transform="rotate(45 150 150)"/>
+</svg>

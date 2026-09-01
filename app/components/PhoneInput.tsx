@@ -8,35 +8,43 @@ interface PhoneInputProps {
   onChange: (fullFormatted: string, dialCode: string, number: string) => void;
 }
 
+interface CountryData {
+  dialCode: string;
+}
+
 export default function MyPhoneInput({ value, onChange }: PhoneInputProps) {
-  const handleChange = (value: string, country: any) => {
+  const handleChange = (
+    value: string,
+    country: CountryData,
+    _event: unknown,
+    formattedValue: string,
+  ) => {
     if (!value || !country) {
       onChange("", "", "");
       return;
     }
 
-    const dialCode = country.dialCode;
-    const restNumber = value.startsWith(dialCode)
-      ? value.slice(dialCode.length)
-      : value;
-
-    const fullFormatted = `+${dialCode}-${restNumber}`;
-    onChange(fullFormatted, dialCode, restNumber);
+    // Use the library's own formatted value (e.g. "+20 120 771 5484") so the
+    // selected country code is always reliably included in what gets submitted.
+    onChange(formattedValue, country.dialCode, value);
   };
 
   return (
-    <div className="relative">
+    <div className="relative" dir="ltr">
       <PhoneInput
         country={"eg"} // default country
         value={value.replace(/[^0-9]/g, "")}
         onChange={handleChange}
         enableSearch
         countryCodeEditable={false}
-        inputClass="!w-full  !py-[16px] !h-[50px] !rounded-[14px] !bg-gray-900/50 border !border-gray-700 !text-white !placeholder-gray-500 !focus:border-cyan-400/50 !focus:outline-none transition duration-300"
-        buttonClass="!bg-gray-900/50 border-r !hover:bg-none !border-gray-700 !rounded-l-xl  !py-3 "
+        inputClass="!w-full  !py-[16px] !h-[50px] !rounded-[14px] !bg-surface-elevated border !border-surface-border !text-text-primary !placeholder-text-faint-2 !focus:border-brand-cyan/50 !focus:outline-none transition duration-300"
+        buttonClass="!bg-surface-elevated border-r !hover:bg-none !border-surface-border !rounded-l-xl  !py-3 "
+        dropdownClass="!bg-brand-navy !text-text-primary"
+        searchClass="!bg-surface-elevated !text-text-primary"
         inputProps={{
           name: "phone",
           required: true,
+          dir: "ltr",
         }}
       />
     </div>

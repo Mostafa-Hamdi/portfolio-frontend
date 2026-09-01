@@ -1,0 +1,23 @@
+{
+  "name": "Mostafa Hamdi — Web Development & Custom Coding",
+  "short_name": "Mostafa Hamdi",
+  "description": "E-commerce engineering, headless web apps, and custom coding for businesses that need more than a template.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#061420",
+  "theme_color": "#061420",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
