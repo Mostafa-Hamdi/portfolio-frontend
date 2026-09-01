@@ -19,6 +19,8 @@ interface AppContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
+  projectTechFilter: string | null;
+  setProjectTechFilter: (tech: string | null) => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -31,6 +33,7 @@ export function AppProviders({
   lang: Lang;
 }) {
   const [theme, setThemeState] = useState<Theme>("dark");
+  const [projectTechFilter, setProjectTechFilter] = useState<string | null>(null);
 
   useEffect(() => {
     // Read persisted theme after mount so the first client render
@@ -47,6 +50,11 @@ export function AppProviders({
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  }, [lang]);
+
   const value = useMemo<AppContextValue>(
     () => ({
       lang,
@@ -55,8 +63,10 @@ export function AppProviders({
       theme,
       setTheme: setThemeState,
       toggleTheme: () => setThemeState((t) => (t === "dark" ? "light" : "dark")),
+      projectTechFilter,
+      setProjectTechFilter,
     }),
-    [lang, theme],
+    [lang, theme, projectTechFilter],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

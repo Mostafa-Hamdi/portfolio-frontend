@@ -21,6 +21,11 @@ export const translations = {
       description2: "مبنية للسرعة والتحويلات والنمو —",
       descriptionHighlight2: "بدون قوالب جاهزة",
       description3: "، فقط كود نظيف مصمم حول عملك.",
+      customSolutionsPrefix: "كما نقدّم",
+      customSolutionsHighlight: "حلول برمجية مخصصة بالكامل",
+      customSolutionsSuffix: "بدون أدوات بناء صفحات، كود مكتوب يدويًا 100%.",
+      techFiltersLabel: "استكشف حسب التقنية",
+      techFilters: { shopify: "Shopify", wordpress: "ووردبريس", customCoding: "برمجة مخصصة" },
       stats: [
         { value: "+50", label: "مشروع منجز" },
         { value: "100%", label: "كود مخصص بالكامل" },
@@ -162,6 +167,9 @@ export const translations = {
       viewProject: "مشاهدة المشروع",
       viewAll: "عرض كل المشاريع",
       collapse: "طي المشاريع",
+      filteredBy: "عرض مشاريع",
+      clearFilter: "إزالة الفلتر — عرض الكل",
+      noMatches: "لا توجد مشاريع بهذه التقنية بعد.",
     },
     contact: {
       badge: "تواصل معنا",
@@ -227,6 +235,11 @@ export const translations = {
       description2: "engineered for speed, conversions and growth —",
       descriptionHighlight2: "no drag-and-drop templates",
       description3: ", just clean code built around your business.",
+      customSolutionsPrefix: "We also engineer",
+      customSolutionsHighlight: "fully custom software solutions",
+      customSolutionsSuffix: "no page builders, 100% hand-coded.",
+      techFiltersLabel: "Explore by technology",
+      techFilters: { shopify: "Shopify", wordpress: "WordPress", customCoding: "Custom Coding" },
       stats: [
         { value: "50+", label: "Projects Shipped" },
         { value: "100%", label: "Custom-Coded" },
@@ -368,6 +381,9 @@ export const translations = {
       viewProject: "View Live Project",
       viewAll: "View All Projects",
       collapse: "Collapse Projects",
+      filteredBy: "Showing projects using",
+      clearFilter: "Clear filter — show all",
+      noMatches: "No projects with this technology yet.",
     },
     contact: {
       badge: "Get In Touch",

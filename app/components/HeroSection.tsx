@@ -5,18 +5,12 @@ import { gsap } from "gsap";
 import { Code2, ShoppingCart, Zap, Braces } from "lucide-react";
 import { useApp } from "../providers";
 import PulseDot from "./PulseDot";
+import { projects } from "../data/projects";
 
 const WHATSAPP_LINK =
   "https://wa.me/201207715484?text=Hi%20Mostafa%2C%20I%27d%20like%20a%20free%20quote%20for%20my%20project.";
 
-const SHOWCASE_IMAGES = [
-  "/kreaz-screen.jpg",
-  "/vedaScreen.png",
-  "/auraScreen.png",
-  "/lenix.png",
-  "/kion.png",
-  "/ecoMarketingScreen.png",
-];
+const SHOWCASE_IMAGES = projects.map((p) => p.image);
 
 const FLOATING_BADGES = [
   { Icon: ShoppingCart, className: "top-[2%] start-[0%]" },
@@ -25,8 +19,14 @@ const FLOATING_BADGES = [
   { Icon: Braces, className: "bottom-[2%] end-[4%]" },
 ];
 
+const TECH_FILTERS = [
+  { key: "shopify", labelKey: "shopify" },
+  { key: "wordpress", labelKey: "wordpress" },
+  { key: "custom", labelKey: "customCoding" },
+] as const;
+
 const HeroSection = () => {
-  const { t, dir } = useApp();
+  const { t, dir, setProjectTechFilter } = useApp();
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleSolidRef = useRef<HTMLSpanElement>(null);
@@ -203,6 +203,11 @@ const HeroSection = () => {
     section?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleTechClick = (techKey: string) => {
+    setProjectTechFilter(techKey);
+    handleScrollTo("portfolio");
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -271,6 +276,32 @@ const HeroSection = () => {
             </span>
             {t.hero.description3}
           </p>
+
+          {/* Custom Solutions Highlight */}
+          <p className="text-text-muted text-base sm:text-lg leading-relaxed max-w-xl">
+            {t.hero.customSolutionsPrefix}{" "}
+            <span className="text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-bold">
+              {t.hero.customSolutionsHighlight}
+            </span>{" "}
+            {t.hero.customSolutionsSuffix}
+          </p>
+
+          {/* Clickable Tech Filters */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
+            <span className="text-text-faint text-xs font-semibold tracking-wide uppercase me-1">
+              {t.hero.techFiltersLabel}
+            </span>
+            {TECH_FILTERS.map(({ key, labelKey }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => handleTechClick(key)}
+                className="cursor-pointer px-4 py-1.5 rounded-full text-xs font-bold bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan-tint hover:bg-brand-cyan hover:text-white hover:border-brand-cyan transition-all duration-300"
+              >
+                {t.hero.techFilters[labelKey]}
+              </button>
+            ))}
+          </div>
 
           {/* Trust Stats */}
           <div ref={statsRef} className="flex flex-wrap gap-6 pt-2">
@@ -377,7 +408,7 @@ const HeroSection = () => {
                         fill
                         sizes="(max-width: 1024px) 90vw, 520px"
                         quality={65}
-                        className="object-contain"
+                        className="object-cover object-top"
                         priority={i === 0}
                         loading={i === 0 ? undefined : "eager"}
                       />

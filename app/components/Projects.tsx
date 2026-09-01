@@ -1,168 +1,61 @@
 "use client";
 
-import { ExternalLink, Sparkles } from "lucide-react";
+import { ExternalLink, Sparkles, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useApp } from "../providers";
 import PulseDot from "./PulseDot";
+import { projects } from "../data/projects";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/* =======================
-   STATIC DATA (HERE)
-======================= */
-const data = {
-  projects: [
-    {
-      _id: "5",
-      heading: "Aura CRM System",
-      paragraph:
-        "Custom CRM solution for managing customers, pipelines, and business growth.",
-      type: "Custom Dashboard",
-      image: "/auraScreen.png",
-      siteLink: "https://auracrm-pi.vercel.app",
-      skills: ["Custom Development", "Dashboard"],
-    },
-    {
-      _id: "1",
-      heading: "Kreaz E-Commerce",
-      paragraph:
-        "Premium cakes, desserts, chocolates, and handcrafted beverages with a modern e-commerce experience.",
-      type: "WooCommerce",
-      image: "/kreaz-screen.jpg",
-      siteLink: "https://kreazdesserts.com/",
-      skills: ["WordPress", "WooCommerce", "Custom Development"],
-    },
-    {
-      _id: "8",
-      heading: "Veda",
-      paragraph: "Veda is a custom-coded website connected to WordPress for dynamic content.",
-      type: "Custom Website",
-      image: "/vedaScreen.png",
-      siteLink: "https://letsveda.com/",
-      skills: ["Custom Development", "WordPress"],
-    },
-    {
-      _id: "13",
-      heading: "Lenixmedia",
-      paragraph:
-        "Lenixmedia is a UK-based digital agency website built with a clean, modern WordPress setup.",
-      type: "WordPress",
-      image: "/lenix.png",
-      siteLink: "https://lenixmedia.co.uk/",
-      skills: ["WordPress", "Elementor PRO"],
-    },
-    {
-      _id: "14",
-      heading: "Kion Electric",
-      paragraph:
-        "Kion is an e-commerce store for electrical products, built for smooth browsing and secure checkout.",
-      type: "WooCommerce",
-      image: "/kion.png",
-      siteLink: "https://kionelectric.com",
-      skills: ["WordPress", "WooCommerce", "E-commerce"],
-    },
-    {
-      _id: "15",
-      heading: "Babel",
-      paragraph:
-        "Babel is a modern WordPress website focused on clean design and fast performance.",
-      type: "WordPress",
-      image: "/babel.png",
-      siteLink: "https://aquamarine-ape-121163.hostingersite.com/",
-      skills: ["WordPress", "Custom Theme"],
-    },
-    {
-      _id: "16",
-      heading: "Al-Matbakh",
-      paragraph:
-        "Al-Matbakh is a WordPress blogging platform sharing recipes and culinary content.",
-      type: "WordPress - Blog",
-      image: "/almatbakh.png",
-      siteLink: "https://al-matbakh.com/",
-      skills: ["WordPress", "Blog"],
-    },
-    {
-      _id: "17",
-      heading: "Info Magazine",
-      paragraph:
-        "Info Magazine is a WordPress-powered online magazine delivering news and articles.",
-      type: "WordPress - Blog",
-      image: "/infologo.png",
-      siteLink: "https://info-magazine.com/",
-      skills: ["WordPress", "Blog"],
-    },
-    {
-      _id: "18",
-      heading: "Al-Ruqyah",
-      paragraph:
-        "Al-Ruqyah is a WordPress blog site providing religious and educational content.",
-      type: "WordPress - Blog",
-      image: "/alruqyah.png",
-      siteLink: "https://al-ruqyah.com/",
-      skills: ["WordPress", "Blog"],
-    },
-    {
-      _id: "12",
-      heading: "Fasttracks",
-      paragraph:
-        "Fast Tracks Travel and Tourism Company is a Saudi company specializing in business services, travel, and tourism solutions.",
-      type: "WordPress",
-      image: "/fasttracksCover.png",
-      siteLink: "https://fasttracks.online/",
-      skills: ["WordPress", "Elementor PRO", "ACF"],
-    },
-    {
-      _id: "4",
-      heading: "Saqr Sahraan Store",
-      paragraph:
-        "Outdoor & camping e-commerce platform for premium gear in the Middle East.",
-      type: "WooCommerce",
-      image: "/saqrScreen.jpg",
-      siteLink: "https://www.d-falcon.com/",
-      skills: ["Custom Development", "E-commerce"],
-    },
-    {
-      _id: "11",
-      heading: "Newtoptrade",
-      paragraph:
-        "Newtoptrade is a B2B marketplace for importing and exporting products.",
-      type: "ZohoSites",
-      image: "/newtoptradeScreen.png",
-      siteLink: "https://newtoptrade.com/",
-      skills: ["ZohoSites"],
-    },
-    {
-      _id: "3",
-      heading: "EcoPerformance Marketing",
-      paragraph:
-        "High-conversion marketing platform built for scalability and performance.",
-      type: "WordPress",
-      image: "/ecoMarketingScreen.png",
-      siteLink: "https://ecoperformancemarketing.com/",
-      skills: ["WordPress", "SEO", "Custom Theme"],
-    },
-  ],
-};
+const TECH_FILTER_MAP = {
+  shopify: { type: "Shopify", labelKey: "shopify" },
+  wordpress: { type: "WordPress", labelKey: "wordpress" },
+  custom: { type: "Custom Coding", labelKey: "customCoding" },
+} as const;
 
 const Projects = () => {
-  const { t } = useApp();
+  const { t, projectTechFilter, setProjectTechFilter } = useApp();
   const [activeFilter, setActiveFilter] = useState("All");
   const [showAll, setShowAll] = useState(false);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  const projectTypes = ["All", ...new Set(data.projects.map((p) => p.type))];
+  const projectTypes = ["All", ...new Set(projects.map((p) => p.type))];
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? data.projects
-      : data.projects.filter((p) => p.type === activeFilter);
+  useEffect(() => {
+    if (projectTechFilter) {
+      setActiveFilter("All");
+      setShowAll(true);
+    }
+  }, [projectTechFilter]);
+
+  const selectFilter = (filter: string) => {
+    setProjectTechFilter(null);
+    setActiveFilter(filter);
+  };
+
+  const clearTechFilter = () => {
+    setProjectTechFilter(null);
+    setActiveFilter("All");
+  };
+
+  const activeTechFilter =
+    projectTechFilter && projectTechFilter in TECH_FILTER_MAP
+      ? TECH_FILTER_MAP[projectTechFilter as keyof typeof TECH_FILTER_MAP]
+      : null;
+
+  const filteredProjects = activeTechFilter
+    ? projects.filter((p) => p.type === activeTechFilter.type)
+    : activeFilter === "All"
+      ? projects
+      : projects.filter((p) => p.type === activeFilter);
 
   const displayedProjects = showAll
     ? filteredProjects
@@ -235,9 +128,9 @@ const Projects = () => {
             {projectTypes.map((filter) => (
               <button
                 key={filter}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => selectFilter(filter)}
                 className={`px-6 py-2.5 rounded-xl font-semibold text-sm transition-all cursor-pointer ${
-                  activeFilter === filter
+                  !projectTechFilter && activeFilter === filter
                     ? "bg-gradient-to-r from-brand-cyan to-brand-blue text-white scale-105"
                     : "bg-surface-elevated text-text-faint hover:text-brand-cyan-tint"
                 }`}
@@ -246,9 +139,27 @@ const Projects = () => {
               </button>
             ))}
           </div>
+
+          {activeTechFilter && (
+            <div className="mt-6 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-cyan/10 border border-brand-cyan/30">
+              <span className="text-brand-cyan-tint text-sm font-semibold">
+                {t.projects.filteredBy} {t.hero.techFilters[activeTechFilter.labelKey]}
+              </span>
+              <button
+                onClick={clearTechFilter}
+                className="cursor-pointer flex items-center gap-1 text-xs font-bold text-text-faint hover:text-brand-cyan transition-colors"
+                aria-label={t.projects.clearFilter}
+              >
+                <X size={14} />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Grid */}
+        {displayedProjects.length === 0 ? (
+          <p className="text-center text-text-faint py-12">{t.projects.noMatches}</p>
+        ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedProjects.map((project, index) => (
             <div
@@ -310,8 +221,9 @@ const Projects = () => {
             </div>
           ))}
         </div>
+        )}
 
-        {filteredProjects.length > 6 && (
+        {!activeTechFilter && filteredProjects.length > 6 && (
           <div className="text-center mt-12">
             <button
               onClick={() => setShowAll(!showAll)}
