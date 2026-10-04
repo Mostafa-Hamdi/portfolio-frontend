@@ -15,8 +15,12 @@ import almatbakh from "@/public/almatbakhlogo.webp";
 import babel from "@/public/babellogo.webp";
 import ruqyah from "@/public/ruqyahlogo.webp";
 import info from "@/public/info.webp";
+import tarikalamal from "@/public/tarikalamallogo.webp";
+import ggs from "@/public/ggslogo.webp";
 
 const PARTNERS = [
+  { src: tarikalamal, name: "Tarik Alamal Alalamia" },
+  { src: ggs, name: "Golden Gates Solutions" },
   { src: kion, name: "Kion Electric" },
   { src: babel, name: "Babel" },
   { src: info, name: "Info Magazine" },

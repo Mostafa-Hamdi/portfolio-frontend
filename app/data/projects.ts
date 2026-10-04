@@ -10,6 +10,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    _id: "19",
+    heading: "Tarik Alamal Alalamia",
+    paragraph:
+      "Business setup and investment consultancy in Saudi Arabia, built on a custom-coded WordPress theme with Arabic and English support.",
+    type: "WordPress",
+    image: "/tarikalamalScreen.webp",
+    siteLink: "https://tarikalamalalalmia.com/",
+    skills: ["WordPress", "Custom Theme", "Custom Development"],
+  },
+  {
+    _id: "20",
+    heading: "Golden Gates Solutions",
+    paragraph:
+      "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
+    type: "WordPress",
+    image: "/ggsScreen.webp",
+    siteLink: "https://skyblue-wolverine-883492.hostingersite.com/",
+    skills: ["WordPress", "Custom Theme", "Custom Development"],
+  },
+  {
     _id: "5",
     heading: "Aura CRM System",
     paragraph:
