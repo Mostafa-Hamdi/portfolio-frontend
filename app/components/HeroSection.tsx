@@ -308,7 +308,7 @@ const HeroSection = () => {
             {t.hero.stats.map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  {stat.value}
+                  <span dir="ltr">{stat.value}</span>
                 </span>
                 <span className="text-text-faint text-xs font-semibold tracking-wide uppercase">
                   {stat.label}

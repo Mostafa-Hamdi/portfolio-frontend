@@ -163,7 +163,7 @@ const Footer = () => {
                   className="flex items-start gap-3 text-text-faint hover:text-brand-cyan transition-colors duration-300 group"
                 >
                   <Phone className="w-5 h-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-sm">+20 120 771 5484</span>
+                  <span className="text-sm" dir="ltr">+20 120 771 5484</span>
                 </a>
               </li>
               <li>

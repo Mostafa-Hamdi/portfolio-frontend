@@ -27,7 +27,7 @@ export const translations = {
       techFiltersLabel: "استكشف حسب التقنية",
       techFilters: { shopify: "Shopify", wordpress: "ووردبريس", customCoding: "برمجة مخصصة" },
       stats: [
-        { value: "+50", label: "مشروع منجز" },
+        { value: "50+", label: "مشروع منجز" },
         { value: "100%", label: "كود مخصص بالكامل" },
         { value: "24/7", label: "دعم فني" },
       ],

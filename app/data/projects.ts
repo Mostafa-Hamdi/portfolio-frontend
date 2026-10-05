@@ -10,6 +10,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    _id: "21",
+    heading: "Meta Space",
+    paragraph:
+      "Arabic affiliate commerce platform where marketers sell ready-made products and track orders and commissions, with no inventory needed.",
+    type: "Custom Coding",
+    image: "/metaspaceScreen.webp",
+    siteLink: "https://4metaspace.com/",
+    skills: ["Custom Development", "Affiliate Marketing", "Dashboard"],
+  },
+  {
     _id: "19",
     heading: "Tarik Alamal Alalamia",
     paragraph:
@@ -38,16 +48,6 @@ export const projects: Project[] = [
     image: "/auraScreen.png",
     siteLink: "https://auracrm-pi.vercel.app",
     skills: ["Custom Development", "Dashboard"],
-  },
-  {
-    _id: "1",
-    heading: "Kreaz E-Commerce",
-    paragraph:
-      "Premium cakes, desserts, chocolates, and handcrafted beverages with a modern e-commerce experience.",
-    type: "WordPress",
-    image: "/kreaz-screen.jpg",
-    siteLink: "https://kreazdesserts.com/",
-    skills: ["WordPress", "WooCommerce", "Custom Development"],
   },
   {
     _id: "8",
@@ -127,5 +127,15 @@ export const projects: Project[] = [
     image: "/fasttracksCover.png",
     siteLink: "https://fasttracks.online/",
     skills: ["WordPress", "Elementor PRO", "ACF"],
+  },
+  {
+    _id: "1",
+    heading: "Kreaz E-Commerce",
+    paragraph:
+      "Premium cakes, desserts, chocolates, and handcrafted beverages with a modern e-commerce experience.",
+    type: "WordPress",
+    image: "/kreaz-screen.jpg",
+    siteLink: "https://kreazdesserts.com/",
+    skills: ["WordPress", "WooCommerce", "Custom Development"],
   },
 ];

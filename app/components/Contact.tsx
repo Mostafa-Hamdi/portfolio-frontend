@@ -40,7 +40,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: t.contact.phone,
-      detail: "+20 120 771 5484",
+      detail: <span dir="ltr">+20 120 771 5484</span>,
       link: "tel:+201207715484",
     },
     {
