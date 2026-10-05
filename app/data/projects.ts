@@ -128,24 +128,4 @@ export const projects: Project[] = [
     siteLink: "https://fasttracks.online/",
     skills: ["WordPress", "Elementor PRO", "ACF"],
   },
-  {
-    _id: "4",
-    heading: "Saqr Sahraan Store",
-    paragraph:
-      "Outdoor & camping e-commerce platform for premium gear in the Middle East.",
-    type: "WordPress",
-    image: "/saqrScreen.jpg",
-    siteLink: "https://www.d-falcon.com/",
-    skills: ["Custom Development", "E-commerce"],
-  },
-  {
-    _id: "11",
-    heading: "Newtoptrade",
-    paragraph:
-      "Newtoptrade is a B2B marketplace for importing and exporting products.",
-    type: "WordPress",
-    image: "/newtoptradeScreen.png",
-    siteLink: "https://newtoptrade.com/",
-    skills: ["ZohoSites"],
-  },
 ];
