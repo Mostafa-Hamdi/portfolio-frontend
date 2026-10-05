@@ -129,13 +129,13 @@ export const projects: Project[] = [
     skills: ["WordPress", "Elementor PRO", "ACF"],
   },
   {
-    _id: "1",
-    heading: "Kreaz E-Commerce",
+    _id: "22",
+    heading: "Asia Abou Hamar",
     paragraph:
-      "Premium cakes, desserts, chocolates, and handcrafted beverages with a modern e-commerce experience.",
+      "Bilingual beauty e-commerce store in Egypt for makeup, perfumes, cosmetics, and bundle offers.",
     type: "WordPress",
-    image: "/kreaz-screen.jpg",
-    siteLink: "https://kreazdesserts.com/",
-    skills: ["WordPress", "WooCommerce", "Custom Development"],
+    image: "/asiaScreen.webp",
+    siteLink: "https://asiaegy.com/",
+    skills: ["WordPress", "WooCommerce", "E-commerce"],
   },
 ];
