@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "Babel is a modern WordPress website focused on clean design and fast performance.",
     type: "WordPress",
     image: "/babel.png",
-    siteLink: "https://aquamarine-ape-121163.hostingersite.com/",
+    siteLink: "https://babel-agency.com",
     skills: ["WordPress", "Custom Theme"],
   },
   {
