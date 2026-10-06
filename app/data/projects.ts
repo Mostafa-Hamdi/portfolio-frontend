@@ -4,7 +4,7 @@ export interface Project {
   paragraph: string;
   type: string;
   image: string;
-  siteLink: string;
+  siteLink?: string;
   skills: string[];
 }
 
@@ -36,7 +36,6 @@ export const projects: Project[] = [
       "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
     type: "WordPress",
     image: "/ggsScreen.webp",
-    siteLink: "https://skyblue-wolverine-883492.hostingersite.com/",
     skills: ["WordPress", "Custom Theme", "Custom Development"],
   },
   {

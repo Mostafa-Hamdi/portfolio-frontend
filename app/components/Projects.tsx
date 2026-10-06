@@ -208,15 +208,17 @@ const Projects = () => {
                   </div>
                 )}
 
-                <a
-                  href={project.siteLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-semibold hover:scale-[1.02] transition-transform"
-                >
-                  <ExternalLink size={16} />
-                  {t.projects.viewProject}
-                </a>
+                {project.siteLink && (
+                  <a
+                    href={project.siteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-semibold hover:scale-[1.02] transition-transform"
+                  >
+                    <ExternalLink size={16} />
+                    {t.projects.viewProject}
+                  </a>
+                )}
               </div>
             </div>
           ))}
