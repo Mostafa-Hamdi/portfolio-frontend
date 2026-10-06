@@ -27,7 +27,7 @@ export const translations = {
       techFiltersLabel: "استكشف حسب التقنية",
       techFilters: { shopify: "Shopify", wordpress: "ووردبريس", customCoding: "برمجة مخصصة" },
       stats: [
-        { value: "50+", label: "مشروع منجز" },
+        { value: "13+", label: "مشروع منجز" },
         { value: "100%", label: "كود مخصص بالكامل" },
         { value: "24/7", label: "دعم فني" },
       ],
@@ -241,7 +241,7 @@ export const translations = {
       techFiltersLabel: "Explore by technology",
       techFilters: { shopify: "Shopify", wordpress: "WordPress", customCoding: "Custom Coding" },
       stats: [
-        { value: "50+", label: "Projects Shipped" },
+        { value: "13+", label: "Projects Shipped" },
         { value: "100%", label: "Custom-Coded" },
         { value: "24/7", label: "Support" },
       ],
