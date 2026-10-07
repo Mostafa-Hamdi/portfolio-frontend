@@ -12,6 +12,7 @@ import whatsapp from "@/public/whatsapp.png";
 import Image from "next/image";
 import { useApp } from "../providers";
 import TikTokIcon from "./icons/TikTokIcon";
+import { contactEmail } from "../seo";
 
 const WHATSAPP_LINK =
   "https://wa.me/201207715484?text=Hi%20Mostafa%2C%20I%27d%20like%20a%20free%20quote%20for%20my%20project.";
@@ -150,11 +151,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:info@mostafahamdi.com"
+                  href={`mailto:${contactEmail}`}
                   className="flex items-start gap-3 text-text-faint hover:text-brand-cyan transition-colors duration-300 group"
                 >
                   <Mail className="w-5 h-5 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-sm">info@mostafahamdi.com</span>
+                  <span className="text-sm">{contactEmail}</span>
                 </a>
               </li>
               <li>

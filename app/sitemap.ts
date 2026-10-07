@@ -1,16 +1,17 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "./seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
     {
-      url: "https://mostafahamdi.com",
+      url: siteUrl,
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://mostafahamdi.com/en",
+      url: `${siteUrl}/en`,
       lastModified,
       changeFrequency: "weekly",
       priority: 1,

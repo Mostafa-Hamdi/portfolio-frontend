@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { MessageCircle, Languages } from "lucide-react";
+import { MessageCircle, Languages, FileText } from "lucide-react";
 import { useApp } from "../providers";
 
 const WHATSAPP_LINK =
@@ -140,6 +140,14 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-4">
             <SwitcherButtons lang={lang} />
             <a
+              href="/Mostafa-Hamdi-CV.pdf"
+              download
+              className="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-bold tracking-wide text-text-muted hover:text-brand-cyan border border-surface-border hover:border-brand-cyan/40 transition-all duration-300"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              {t.header.cv}
+            </a>
+            <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
@@ -200,6 +208,14 @@ const Header = () => {
                 {item.name}
               </button>
             ))}
+            <a
+              href="/Mostafa-Hamdi-CV.pdf"
+              download
+              className="w-full flex items-center gap-2 px-6 py-4 text-text-muted hover:text-text-primary font-medium transition-all duration-300 hover:bg-brand-cyan/10 border-s-4 border-transparent hover:border-brand-cyan"
+            >
+              <FileText className="w-4 h-4" />
+              {t.header.cv}
+            </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"

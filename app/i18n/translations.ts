@@ -3,17 +3,17 @@ export type Lang = "ar" | "en";
 export const translations = {
   ar: {
     meta: {
-      title:
-        "مصطفى حمدي | وكالة تطوير مواقع وتجارة إلكترونية — Shopify وWooCommerce وبرمجة مخصصة",
+      title: "مصطفى حمدي | مطوّر مواقع: Shopify وووردبريس وReact",
       description:
-        "مواقع تجارة إلكترونية وتطبيقات ويب مخصصة بأكواد نظيفة — بدون قوالب جاهزة. تطوير Shopify وWooCommerce وووردبريس وبرمجة مخصصة، إعداد الاستضافة، وأتمتة سير العمل. احصل على عرض سعر مجاني اليوم.",
+        "مطوّر مواقع في القاهرة: متاجر Shopify وWooCommerce ومواقع ووردبريس وتطبيقات React وNext.js لشركات في مصر والسعودية. متاح لمشاريع العمل الحر وللوظائف بدوام كامل.",
     },
     header: {
       nav: { home: "الرئيسية", approach: "منهجنا", services: "خدماتنا", work: "أعمالنا", contact: "تواصل" },
       cta: "احصل على عرض سعر مجاني",
+      cv: "السيرة الذاتية",
     },
     hero: {
-      badge: "وكالة تطوير مواقع وتجارة إلكترونية",
+      badge: "مطوّر مواقع وتجارة إلكترونية",
       titleLine1: "تجارة إلكترونية و",
       titleLine2: "تطوير مواقع احترافي",
       description1: "نصمم ونطوّر",
@@ -28,11 +28,13 @@ export const translations = {
       techFilters: { shopify: "Shopify", wordpress: "ووردبريس", customCoding: "برمجة مخصصة" },
       stats: [
         { value: "13+", label: "مشروع منجز" },
-        { value: "100%", label: "كود مخصص بالكامل" },
-        { value: "24/7", label: "دعم فني" },
+        { value: "2+", label: "سنوات خبرة" },
+        { value: "24", label: "ساعة للرد" },
       ],
       ctaPrimary: "احصل على عرض سعر مجاني",
       ctaSecondary: "شاهد أعمالنا",
+      hireTitle: "تبحث عن مطوّر بدوام كامل؟",
+      hireCta: "حمّل سيرتي الذاتية",
       showcaseCaption: "مواقع حقيقية قمنا ببرمجتها",
     },
     approach: {
@@ -206,7 +208,7 @@ export const translations = {
       },
     },
     footer: {
-      tagline: "وكالة تطوير مواقع وتجارة إلكترونية نبني متاجر وتطبيقات بأكواد مخصصة — بدون قوالب.",
+      tagline: "مطوّر مواقع وتجارة إلكترونية: متاجر وتطبيقات ويب بأكواد مخصصة، بدون قوالب.",
       navigation: "التصفح",
       services: "الخدمات",
       getInTouch: "تواصل معنا",
@@ -217,17 +219,17 @@ export const translations = {
   },
   en: {
     meta: {
-      title:
-        "Mostafa Hamdi | E-Commerce & Web Development Agency — Shopify, WooCommerce & Custom Coding",
+      title: "Mostafa Hamdi | Web Developer: Shopify, WordPress & React",
       description:
-        "Custom e-commerce websites and web applications engineered clean — no page builders, no templates. Shopify, WooCommerce, WordPress, and custom-coded development, hosting setup, and workflow automation. Get a free quote today.",
+        "Cairo-based web developer building Shopify, WooCommerce, WordPress and React/Next.js sites for businesses in Egypt and Saudi Arabia. Hire me freelance or full-time.",
     },
     header: {
       nav: { home: "Home", approach: "Approach", services: "Services", work: "Work", contact: "Contact" },
       cta: "Get Free Quote",
+      cv: "CV",
     },
     hero: {
-      badge: "E-Commerce & Web Development Agency",
+      badge: "E-Commerce & Web Developer",
       titleLine1: "E-Commerce &",
       titleLine2: "Web Development",
       description1: "We design and build",
@@ -242,11 +244,13 @@ export const translations = {
       techFilters: { shopify: "Shopify", wordpress: "WordPress", customCoding: "Custom Coding" },
       stats: [
         { value: "13+", label: "Projects Shipped" },
-        { value: "100%", label: "Custom-Coded" },
-        { value: "24/7", label: "Support" },
+        { value: "2+", label: "Years Experience" },
+        { value: "24h", label: "Reply Time" },
       ],
       ctaPrimary: "Get a Free Quote",
       ctaSecondary: "View Our Work",
+      hireTitle: "Hiring full-time?",
+      hireCta: "Download my CV",
       showcaseCaption: "Real sites we've engineered",
     },
     approach: {
@@ -420,7 +424,7 @@ export const translations = {
       },
     },
     footer: {
-      tagline: "E-commerce & web development agency engineering custom-coded stores and applications — no templates.",
+      tagline: "E-commerce & web developer: custom-coded stores and web apps, no templates.",
       navigation: "Navigation",
       services: "Services",
       getInTouch: "Get in Touch",

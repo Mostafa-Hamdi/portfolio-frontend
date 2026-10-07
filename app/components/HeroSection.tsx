@@ -29,10 +29,7 @@ const HeroSection = () => {
   const { t, dir, setProjectTechFilter } = useApp();
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
-  const titleSolidRef = useRef<HTMLSpanElement>(null);
-  const titleColoredRef = useRef<HTMLSpanElement>(null);
   const accentLineRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
 
@@ -55,19 +52,8 @@ const HeroSection = () => {
       { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" },
     );
 
-    tl.fromTo(
-      titleSolidRef.current,
-      { opacity: 0, x: dir === "rtl" ? 30 : -30, rotateX: -15 },
-      { opacity: 1, x: 0, rotateX: 0, duration: 0.5 },
-      "-=0.2",
-    );
-    tl.fromTo(
-      titleColoredRef.current,
-      { opacity: 0, x: dir === "rtl" ? -30 : 30, rotateX: 15 },
-      { opacity: 1, x: 0, rotateX: 0, duration: 0.5 },
-      "-=0.4",
-    );
-
+    // The title and description are the page's LCP text, so they are not
+    // faded in: hiding them until hydration pushed mobile LCP to ~3.9 s.
     tl.fromTo(
       accentLineRef.current,
       { scaleX: 0, opacity: 0 },
@@ -79,13 +65,6 @@ const HeroSection = () => {
         transformOrigin: dir === "rtl" ? "right" : "left",
       },
       "-=0.2",
-    );
-
-    tl.fromTo(
-      descriptionRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.4 },
-      "-=0.3",
     );
 
     if (statsRef.current) {
@@ -237,11 +216,10 @@ const HeroSection = () => {
                   : "text-4xl sm:text-6xl"
               }`}
             >
-              <span ref={titleSolidRef} className="block text-text-primary">
+              <span className="block text-text-primary">
                 {t.hero.titleLine1}
               </span>
               <span
-                ref={titleColoredRef}
                 className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
                 style={{
                   filter: "drop-shadow(0 0 20px rgba(34, 211, 238, 0.35))",
@@ -259,10 +237,7 @@ const HeroSection = () => {
           </div>
 
           {/* Description */}
-          <p
-            ref={descriptionRef}
-            className="text-text-muted text-lg sm:text-xl leading-relaxed max-w-xl font-light"
-          >
+          <p className="text-text-muted text-lg sm:text-xl leading-relaxed max-w-xl font-light">
             {t.hero.description1}{" "}
             <span className="relative inline-block">
               <span className="text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-semibold">
@@ -370,6 +345,18 @@ const HeroSection = () => {
               </span>
             </button>
           </div>
+
+          {/* For employers */}
+          <p className="text-text-faint text-sm">
+            {t.hero.hireTitle}{" "}
+            <a
+              href="/Mostafa-Hamdi-CV.pdf"
+              download
+              className="font-semibold text-brand-cyan-tint underline underline-offset-4 hover:text-brand-cyan transition-colors duration-300"
+            >
+              {t.hero.hireCta}
+            </a>
+          </p>
         </div>
 
         {/* Laptop Showcase */}
@@ -410,7 +397,6 @@ const HeroSection = () => {
                         quality={65}
                         className="object-cover object-top"
                         priority={i === 0}
-                        loading={i === 0 ? undefined : "eager"}
                       />
                     </div>
                   ))}

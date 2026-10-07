@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useApp } from "../providers";
 import PulseDot from "./PulseDot";
 import TikTokIcon from "./icons/TikTokIcon";
+import { contactEmail } from "../seo";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -34,8 +35,8 @@ export default function Contact() {
     {
       icon: Mail,
       title: t.contact.email,
-      detail: "info@mostafahamdi.com",
-      link: "mailto:info@mostafahamdi.com",
+      detail: contactEmail,
+      link: `mailto:${contactEmail}`,
     },
     {
       icon: Phone,

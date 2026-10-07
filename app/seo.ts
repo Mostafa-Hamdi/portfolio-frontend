@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 
-export const siteUrl = "https://mostafahamdi.com";
+// The live address. Set NEXT_PUBLIC_SITE_URL in Vercel (e.g. to
+// https://mostafahamdi.com) once a custom domain is connected — canonical,
+// hreflang, Open Graph, sitemap and robots all follow it.
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://mostafahamdidev.vercel.app"
+).replace(/\/$/, "");
+
+export const contactEmail = "mostafa.hamdi.dev@gmail.com";
 
 const content = {
   ar: {
-    title:
-      "مصطفى حمدي | وكالة تطوير مواقع وتجارة إلكترونية — Shopify, WooCommerce & Custom Coding",
+    title: "مصطفى حمدي | مطوّر مواقع: Shopify وووردبريس وReact",
     description:
-      "مواقع تجارة إلكترونية وتطبيقات ويب مخصصة بأكواد نظيفة — بدون قوالب جاهزة. تطوير Shopify وWooCommerce وووردبريس وبرمجة مخصصة، إعداد الاستضافة، وأتمتة سير العمل. احصل على عرض سعر مجاني اليوم.",
-    ogTitle: "مصطفى حمدي | وكالة تطوير مواقع وتجارة إلكترونية",
+      "مطوّر مواقع في القاهرة: متاجر Shopify وWooCommerce ومواقع ووردبريس وتطبيقات React وNext.js لشركات في مصر والسعودية. متاح لمشاريع العمل الحر وللوظائف بدوام كامل.",
+    ogTitle: "مصطفى حمدي | مطوّر مواقع وتجارة إلكترونية",
     ogDescription:
-      "مواقع تجارة إلكترونية وتطبيقات ويب مخصصة بأكواد نظيفة — بدون قوالب جاهزة. Shopify، WooCommerce، ووردبريس، وبرمجة مخصصة.",
+      "متاجر Shopify وWooCommerce ومواقع ووردبريس وتطبيقات React وNext.js. متاح لمشاريع العمل الحر وللوظائف بدوام كامل.",
     keywords: [
       "تطوير متاجر إلكترونية",
       "تصميم مواقع",
@@ -18,28 +24,32 @@ const content = {
       "تطوير WooCommerce",
       "تطوير ووردبريس",
       "برمجة مواقع مخصصة",
+      "مطور مواقع مستقل",
       "e-commerce website development",
-      "web development agency",
+      "freelance web developer",
       "Shopify website design",
       "WooCommerce developer",
       "custom web application development",
       "WordPress developer",
+      "React developer",
+      "Next.js developer",
       "custom-coded websites",
       "website automation services",
     ],
     locale: "ar_EG",
   },
   en: {
-    title:
-      "Mostafa Hamdi | E-Commerce & Web Development Agency — Shopify, WooCommerce & Custom Coding",
+    title: "Mostafa Hamdi | Web Developer: Shopify, WordPress & React",
     description:
-      "Custom e-commerce websites and web applications engineered clean — no page builders, no templates. Shopify, WooCommerce, WordPress, and custom-coded development, hosting setup, and workflow automation. Get a free quote today.",
-    ogTitle: "Mostafa Hamdi | E-Commerce & Web Development Agency",
+      "Cairo-based web developer building Shopify, WooCommerce, WordPress and React/Next.js sites for businesses in Egypt and Saudi Arabia. Hire me freelance or full-time.",
+    ogTitle: "Mostafa Hamdi | Web Developer: Shopify, WordPress & React",
     ogDescription:
-      "Custom e-commerce websites and web applications engineered clean — no page builders, no templates. Shopify, WooCommerce, WordPress, and custom coding.",
+      "Shopify, WooCommerce, WordPress and React/Next.js builds for businesses in Egypt and Saudi Arabia. Available for freelance projects and full-time roles.",
     keywords: [
       "e-commerce website development",
-      "web development agency",
+      "freelance web developer",
+      "React developer",
+      "Next.js developer",
       "Shopify website design",
       "WooCommerce developer",
       "custom web application development",
@@ -57,8 +67,10 @@ export function buildMetadata(lang: "ar" | "en"): Metadata {
 
   return {
     metadataBase: new URL(siteUrl),
+    // `absolute` so /en doesn't inherit the root template and end up with
+    // "| Mostafa Hamdi" twice in its title.
     title: {
-      default: c.title,
+      absolute: c.title,
       template: "%s | Mostafa Hamdi",
     },
     description: c.description,
@@ -103,10 +115,10 @@ export function buildMetadata(lang: "ar" | "en"): Metadata {
       description: c.ogDescription,
       images: [
         {
-          url: "/favicon-512x512.png",
-          width: 512,
-          height: 512,
-          alt: "Mostafa Hamdi",
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Mostafa Hamdi — Web Developer: Shopify, WordPress & React",
         },
       ],
     },
@@ -114,7 +126,7 @@ export function buildMetadata(lang: "ar" | "en"): Metadata {
       card: "summary_large_image",
       title: c.ogTitle,
       description: c.ogDescription,
-      images: ["/favicon-512x512.png"],
+      images: ["/og-image.png"],
     },
   };
 }
@@ -128,11 +140,11 @@ export function buildJsonLd(lang: "ar" | "en") {
     description:
       lang === "ar"
         ? content.ar.ogDescription
-        : "E-commerce engineering, custom web applications, and custom coding — Shopify, WooCommerce, WordPress, hosting setup and workflow automation.",
+        : content.en.ogDescription,
     url: `${siteUrl}${path}`,
     logo: `${siteUrl}/brand/logo-dark.png`,
-    image: `${siteUrl}/favicon-512x512.png`,
-    email: "info@mostafahamdi.com",
+    image: `${siteUrl}/og-image.png`,
+    email: contactEmail,
     telephone: "+201207715484",
     areaServed: "Worldwide",
     address: {
