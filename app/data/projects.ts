@@ -20,6 +20,16 @@ export const projects: Project[] = [
     skills: ["Custom Development", "Dashboard", "QR Attendance", "SaaS"],
   },
   {
+    _id: "26",
+    heading: "SharkUp",
+    paragraph:
+      "Arabic website for a Saudi digital marketing agency offering SEO, ad campaign management, social media, and e-commerce development.",
+    type: "WordPress",
+    image: "/sharkupScreen.png",
+    siteLink: "https://sharkup.net/",
+    skills: ["WordPress", "Elementor PRO", "SEO"],
+  },
+  {
     _id: "21",
     heading: "Meta Space",
     paragraph:
@@ -58,15 +68,6 @@ export const projects: Project[] = [
     image: "/auraScreen.png",
     siteLink: "https://auracrm-pi.vercel.app",
     skills: ["Custom Development", "Dashboard"],
-  },
-  {
-    _id: "8",
-    heading: "Veda",
-    paragraph: "Veda is a custom-coded website connected to WordPress for dynamic content.",
-    type: "Custom Coding",
-    image: "/vedaScreen.png",
-    siteLink: "https://letsveda.com/",
-    skills: ["Custom Development", "WordPress"],
   },
   {
     _id: "13",
@@ -167,5 +168,14 @@ export const projects: Project[] = [
     image: "/mathTeacherScreen.webp",
     siteLink: "https://teacher-eight-dun.vercel.app/",
     skills: ["Custom Development", "Education", "Online Booking"],
+  },
+  {
+    _id: "8",
+    heading: "Veda",
+    paragraph: "Veda is a custom-coded website connected to WordPress for dynamic content.",
+    type: "Custom Coding",
+    image: "/vedaScreen.png",
+    siteLink: "https://letsveda.com/",
+    skills: ["Custom Development", "WordPress"],
   },
 ];
