@@ -10,6 +10,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    _id: "23",
+    heading: "Centerk — Center Management System",
+    paragraph:
+      "Multi-center management system for tutoring centers: QR attendance in seconds, payments and receipts, and separate logins for staff, students, and parents.",
+    type: "Custom Coding",
+    image: "/centerkScreen.png",
+    siteLink: "https://centerk-blush.vercel.app/",
+    skills: ["Custom Development", "Dashboard", "QR Attendance", "SaaS"],
+  },
+  {
     _id: "21",
     heading: "Meta Space",
     paragraph:
@@ -29,15 +39,16 @@ export const projects: Project[] = [
     siteLink: "https://tarikalamalalalmia.com/",
     skills: ["WordPress", "Custom Theme", "Custom Development"],
   },
-  {
-    _id: "20",
-    heading: "Golden Gates Solutions",
-    paragraph:
-      "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
-    type: "WordPress",
-    image: "/ggsScreen.webp",
-    skills: ["WordPress", "Custom Theme", "Custom Development"],
-  },
+  // Hidden for now — re-enable when ready.
+  // {
+  //   _id: "20",
+  //   heading: "Golden Gates Solutions",
+  //   paragraph:
+  //     "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
+  //   type: "WordPress",
+  //   image: "/ggsScreen.webp",
+  //   skills: ["WordPress", "Custom Theme", "Custom Development"],
+  // },
   {
     _id: "5",
     heading: "Aura CRM System",
@@ -136,5 +147,25 @@ export const projects: Project[] = [
     image: "/asiaScreen.webp",
     siteLink: "https://asiaegy.com/",
     skills: ["WordPress", "WooCommerce", "E-commerce"],
+  },
+  {
+    _id: "24",
+    heading: "Dr. Laila Mansour — Chemistry Teacher",
+    paragraph:
+      "Arabic website for a chemistry teacher with available groups, recorded experiments and courses, lab seat booking, and a student login.",
+    type: "Custom Coding",
+    image: "/chemistryTeacherScreen.webp",
+    siteLink: "https://teacher2-eight.vercel.app/",
+    skills: ["Custom Development", "Education", "Online Booking"],
+  },
+  {
+    _id: "25",
+    heading: "Mostafa Hamdy — Math Teacher",
+    paragraph:
+      "Arabic website for a math teacher with group booking, online courses, a student login, and direct WhatsApp contact.",
+    type: "Custom Coding",
+    image: "/mathTeacherScreen.webp",
+    siteLink: "https://teacher-eight-dun.vercel.app/",
+    skills: ["Custom Development", "Education", "Online Booking"],
   },
 ];
