@@ -11,12 +11,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     _id: "23",
-    heading: "Centerk — Center Management System",
+    heading: "Rewaq — Center Management System",
     paragraph:
       "Multi-center management system for tutoring centers: QR attendance in seconds, payments and receipts, and separate logins for staff, students, and parents.",
     type: "Custom Coding",
-    image: "/centerkScreen.png",
-    siteLink: "https://centerk-blush.vercel.app/",
+    image: "/rewaqScreen.png",
+    siteLink: "https://newcenterk.vercel.app/t/teachercenter-demo/login",
     skills: ["Custom Development", "Dashboard", "QR Attendance", "SaaS"],
   },
   {
@@ -49,16 +49,15 @@ export const projects: Project[] = [
     siteLink: "https://tarikalamalalalmia.com/",
     skills: ["WordPress", "Custom Theme", "Custom Development"],
   },
-  // Hidden for now — re-enable when ready.
-  // {
-  //   _id: "20",
-  //   heading: "Golden Gates Solutions",
-  //   paragraph:
-  //     "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
-  //   type: "WordPress",
-  //   image: "/ggsScreen.webp",
-  //   skills: ["WordPress", "Custom Theme", "Custom Development"],
-  // },
+  {
+    _id: "20",
+    heading: "Golden Gates Solutions",
+    paragraph:
+      "Automatic doors and gates company in Saudi Arabia, built on a custom-coded WordPress theme showcasing products, services, and projects.",
+    type: "WordPress",
+    image: "/ggsScreen.webp",
+    skills: ["WordPress", "Custom Theme", "Custom Development"],
+  },
   {
     _id: "5",
     heading: "Aura CRM System",
