@@ -25,7 +25,7 @@ export const projects: Project[] = [
     paragraph:
       "Arabic website for a Saudi digital marketing agency offering SEO, ad campaign management, social media, and e-commerce development.",
     type: "WordPress",
-    image: "/sharkupScreen.png",
+    image: "/sharkupScreen.webp",
     siteLink: "https://sharkup.net/",
     skills: ["WordPress", "Elementor PRO", "SEO"],
   },
@@ -134,8 +134,8 @@ export const projects: Project[] = [
     paragraph:
       "Fast Tracks Travel and Tourism Company is a Saudi company specializing in business services, travel, and tourism solutions.",
     type: "WordPress",
-    image: "/fasttracksCover.png",
-    siteLink: "https://fasttracks.online/",
+    image: "/fasttracksScreen.webp",
+    siteLink: "https://last.fasttracks.online/",
     skills: ["WordPress", "Elementor PRO", "ACF"],
   },
   {
@@ -168,13 +168,14 @@ export const projects: Project[] = [
     siteLink: "https://teacher-eight-dun.vercel.app/",
     skills: ["Custom Development", "Education", "Online Booking"],
   },
-  {
-    _id: "8",
-    heading: "Veda",
-    paragraph: "Veda is a custom-coded website connected to WordPress for dynamic content.",
-    type: "Custom Coding",
-    image: "/vedaScreen.png",
-    siteLink: "https://letsveda.com/",
-    skills: ["Custom Development", "WordPress"],
-  },
+  // Hidden for now — re-enable when ready.
+  // {
+  //   _id: "8",
+  //   heading: "Veda",
+  //   paragraph: "Veda is a custom-coded website connected to WordPress for dynamic content.",
+  //   type: "Custom Coding",
+  //   image: "/vedaScreen.png",
+  //   siteLink: "https://letsveda.com/",
+  //   skills: ["Custom Development", "WordPress"],
+  // },
 ];
