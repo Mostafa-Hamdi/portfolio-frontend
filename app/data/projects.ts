@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "Multi-center management system for tutoring centers: QR attendance in seconds, payments and receipts, and separate logins for staff, students, and parents.",
     type: "Custom Coding",
     image: "/rewaqScreen.png",
-    siteLink: "https://newcenterk.vercel.app/t/teachercenter-demo/login",
+    siteLink: "https://newcenterk.vercel.app/",
     skills: ["Custom Development", "Dashboard", "QR Attendance", "SaaS"],
   },
   {
