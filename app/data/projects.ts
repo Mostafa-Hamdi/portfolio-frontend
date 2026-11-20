@@ -20,6 +20,26 @@ export const projects: Project[] = [
     skills: ["Custom Development", "Dashboard", "QR Attendance", "SaaS"],
   },
   {
+    _id: "27",
+    heading: "GBW Store",
+    paragraph:
+      "Fully customized Shopify store for security and business tech, with order tracking, optional image attachment and delivery time selection, sticky add to cart, live product view counts, and pair-with, related, and bundle offers.",
+    type: "Shopify",
+    image: "/gbwScreen.webp",
+    siteLink: "https://gbwstore.com/",
+    skills: ["Shopify", "Liquid", "Custom Theme", "E-commerce"],
+  },
+  {
+    _id: "28",
+    heading: "Cottonil KSA",
+    paragraph:
+      "Salla store for Cottonil's Egyptian cotton apparel in Saudi Arabia, built on a custom theme with custom features like sticky add to cart and a buy now button.",
+    type: "Custom Coding",
+    image: "/cottonilScreen.webp",
+    siteLink: "https://cottonnilksa.com/",
+    skills: ["Salla", "Custom Theme", "E-commerce"],
+  },
+  {
     _id: "26",
     heading: "SharkUp",
     paragraph:
