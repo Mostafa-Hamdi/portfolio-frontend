@@ -50,14 +50,14 @@ export const projects: Project[] = [
     skills: ["WordPress", "Elementor PRO", "SEO"],
   },
   {
-    _id: "21",
-    heading: "Meta Space",
+    _id: "12",
+    heading: "Fasttracks",
     paragraph:
-      "Arabic affiliate commerce platform where marketers sell ready-made products and track orders and commissions, with no inventory needed.",
-    type: "Custom Coding",
-    image: "/metaspaceScreen.webp",
-    siteLink: "https://4metaspace.com/",
-    skills: ["Custom Development", "Affiliate Marketing", "Dashboard"],
+      "Fast Tracks Travel and Tourism Company is a Saudi company specializing in business services, travel, and tourism solutions.",
+    type: "WordPress",
+    image: "/fasttracksScreen.webp",
+    siteLink: "https://last.fasttracks.online/",
+    skills: ["WordPress", "Elementor PRO", "ACF"],
   },
   {
     _id: "19",
@@ -149,14 +149,14 @@ export const projects: Project[] = [
     skills: ["WordPress", "Blog"],
   },
   {
-    _id: "12",
-    heading: "Fasttracks",
+    _id: "21",
+    heading: "Meta Space",
     paragraph:
-      "Fast Tracks Travel and Tourism Company is a Saudi company specializing in business services, travel, and tourism solutions.",
-    type: "WordPress",
-    image: "/fasttracksScreen.webp",
-    siteLink: "https://last.fasttracks.online/",
-    skills: ["WordPress", "Elementor PRO", "ACF"],
+      "Arabic affiliate commerce platform where marketers sell ready-made products and track orders and commissions, with no inventory needed.",
+    type: "Custom Coding",
+    image: "/metaspaceScreen.webp",
+    siteLink: "https://4metaspace.com/",
+    skills: ["Custom Development", "Affiliate Marketing", "Dashboard"],
   },
   {
     _id: "22",
